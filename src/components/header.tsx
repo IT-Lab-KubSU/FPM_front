@@ -14,7 +14,7 @@ export default function Header() {
                 priority
             />
         </div>
-        <nav className="flex justify-around items-center w-3/5">
+        <nav className="flex justify-around items-center font-semibold w-3/5">
             <a href="#"><span>Абитуриентам</span></a>
             <a href="#"><span>Кафедры</span></a>
             <a href="#"><span>Наши проекты</span></a>
