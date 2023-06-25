@@ -20,6 +20,8 @@ export default function Intro() {
                 в профессии и осваивать новые специальности
             </p>
             <div className="my-16 h-200px flex">
+                {/*remove in production*/}
+                <div className="hidden text-2xl px-12 py-4"></div>
                 <BlueButton href={"#"} text={"ПОСТУПИТЬ"} textSize={"2xl"} px={"12"} py={"4"}/>
                 <div className="z-0 w-[60%] h-[2rem] bg-gradient-to-r from-[#5C83E7]"></div>
 
