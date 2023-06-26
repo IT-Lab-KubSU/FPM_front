@@ -2,6 +2,7 @@ import Header from "@/modules/Header/Header";
 import Intro from "@/modules/Intro/Intro";
 import Subtitle from "@/components/Subtitle/Subtitle";
 import Directions from "@/modules/Directions/Directions";
+import News from "@/components/News/News";
 
 export default function Home() {
     return (
