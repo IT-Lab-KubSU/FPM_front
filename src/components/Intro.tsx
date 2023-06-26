@@ -3,19 +3,25 @@ import rPattern from "../../public/Pattern.svg";
 import search from "../../public/search.svg";
 import BlueButton from "@/components/BlueButton";
 import Subtitle from "@/components/Subtitle";
+import head_im from "../../public/head_im.png";
 
 export default function Intro() {
     return (<>
-        <div className="container mt-24 mx-auto px-12">
-            <p className="text-2xl font-extralight tracking-[.25em]">КУБГУ</p>
-            <h1 className="text-5xl">
-                Факультет<br/>
-                компьютерных технологий<br/>
-                и<br/>
-                прикладной математики<br/>
+        <div>
+            <Image
+                className="bg-cover bg-center w-screen absolute inset-0"
+                src={head_im}
+                alt="FPM head"
+                priority
+            />
+        <div className="container mt-24 mx-auto px-12 relative">
+            <p className="text-3xl font-extralight">КУБГУ</p><br/><br/>
+            <h1 className="text-6xl font-medium">
+                Факультет компьютерных технологий и прикладной математики
             </h1>
             <br/>
-            <p className="font-extralight">
+            <br/>
+            <p className="text-2xl font-extralight">
                 Открываем путь в IT, помогаем совершенствоваться<br/>
                 в профессии и осваивать новые специальности
             </p>
@@ -28,7 +34,7 @@ export default function Intro() {
             </div>
         </div>
 
-
+//opacity-60 dark:invert
         <div className="rPattern absolute right-0 top-24 z-0 opacity-60 dark:invert">
             <svg width="350" height="100%" viewBox="0 0 673 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -62,6 +68,7 @@ export default function Intro() {
             {/*    height={500}*/}
             {/*    priority*/}
             {/*/>*/}
+        </div>
         </div>
     </>)
 }
