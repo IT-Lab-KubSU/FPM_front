@@ -1,6 +1,7 @@
-import Header from "@/components/Header";
-import Intro from "@/components/Intro";
-import Subtitle from "@/components/Subtitle";
+import Header from "@/modules/Header/Header";
+import Intro from "@/modules/Intro/Intro";
+import Subtitle from "@/components/Subtitle/Subtitle";
+import Directions from "@/modules/Directions/Directions";
 
 export default function Home() {
     return (
@@ -8,7 +9,7 @@ export default function Home() {
             <Header/>
             <Intro/>
             <Subtitle text={"Учеба на ФКТиПМ"}/>
-            <Subtitle text={"Направления подготовки"}/>
+            <Directions/>
             <Subtitle text={"Образовательные программы обучения"}/>
         </>
     )

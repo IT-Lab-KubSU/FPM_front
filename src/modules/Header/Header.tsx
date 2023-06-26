@@ -1,8 +1,8 @@
 import Image from "next/image";
-import fpmLogo from "../../public/fpm_logo.svg";
-import search from "../../public/search.svg";
-import BlueButton from "@/components/BlueButton";
-import './logo.css'
+import fpmLogo from "../../../public/fpm_logo.svg";
+import search from "../../../public/search.svg";
+import BlueButton from "@/components/BlueButton/BlueButton";
+
 
 export default function Header() {
     return (<header
@@ -22,7 +22,7 @@ export default function Header() {
             <a href="#" className="p-3"><span>Наши проекты</span></a>
             <a href="#" className="p-3"><span>Контакты</span></a>
             <a href="#" className="p-3"><span>Студентам</span></a>
-            <BlueButton href={"#"} text={"ПЛАТФОРМА"}/>
+            <BlueButton href={"#"} text={"ПЛАТФОРМА"} className={"px-4 py-3"}/>
         </nav>
         <div className="tools flex justify-end w-auto">
             <Image

@@ -1,8 +1,6 @@
 import Image from "next/image";
-import rPattern from "../../public/Pattern.svg";
-import search from "../../public/search.svg";
-import BlueButton from "@/components/BlueButton";
-import Subtitle from "@/components/Subtitle";
+import BlueButton from "@/components/BlueButton/BlueButton";
+import './logo.css'
 
 export default function Intro() {
     return (<>
@@ -20,9 +18,9 @@ export default function Intro() {
                 в профессии и осваивать новые специальности
             </p>
             <div className="my-16 h-200px flex">
-                {/*remove in production*/}
+                {/*toDo: remove in prod*/}
                 <div className="hidden text-2xl py-4 py-3 px-4"></div>
-                <BlueButton href={"#"} text={"ПОСТУПИТЬ"} textSize={"2xl"} px={"12"} py={"4"}/>
+                <BlueButton href={"#"} text={"ПОСТУПИТЬ"} className={"text-2xl px-12 py-4"}/>
                 <div className="z-0 w-[60%] h-[2rem] bg-gradient-to-r from-[#5C83E7]"></div>
 
             </div>
@@ -53,15 +51,6 @@ export default function Intro() {
                 <path d="M154.855 713.017H672.666V764.088H154.855V713.017Z" fill="black" className="svg-elem-10"></path>
                 <path d="M491.116 177.516H672.666V228.587H491.116V177.516Z" fill="black" className="svg-elem-11"></path>
             </svg>
-
-
-            {/*<Image*/}
-            {/*    className=""*/}
-            {/*    src={rPattern}*/}
-            {/*    alt=""*/}
-            {/*    height={500}*/}
-            {/*    priority*/}
-            {/*/>*/}
         </div>
     </>)
 }
