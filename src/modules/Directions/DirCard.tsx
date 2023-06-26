@@ -17,7 +17,7 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
     return (<UseClient>
         <>
             <div onClick={() => set(index)}
-                 className={`bg-white p-8 w-full ${open ? "pb-12" : ""} dark:text-zinc-800 cursor-pointer duration-700 ease-in-out rounded-3xl mb-4 text-2xl shadow-2xl flex flex-col lg:flex-row justify-start`}>
+                 className={`bg-white p-8 w-full dark:bg-zinc-100 ${open ? "pb-12" : ""} dark:text-zinc-800 cursor-pointer duration-700 ease-in-out rounded-3xl mb-4 text-2xl drop-shadow-md flex flex-col lg:flex-row justify-start`}>
 
                 <div className="text-[#3364E2] text-4xl font-semibold">
                     {`0${index + 1}`}
