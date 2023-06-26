@@ -28,13 +28,13 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
                             {title}
                         </p>
                         {open ? (
-                            <p className="mt-8">
+                            <p className="mt-4">
                                 {text}
                             </p>) : ""}
                     </div>
                     {open ? (<>
                         <div className="mb-12">
-                            <p className="text-3xl mb-4 font-semibold">Предметы ЕГЭ:</p>
+                            <p className="text-3xl my-4 font-semibold">Предметы ЕГЭ:</p>
                             <p>{subjects}</p>
                         </div>
                         <BlueButton href={"#"} text={"Подробнее"} className={"py-4 px-8"}/></>) : ""}
