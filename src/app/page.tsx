@@ -3,6 +3,8 @@ import Intro from "@/modules/Intro/Intro";
 import Subtitle from "@/components/Subtitle/Subtitle";
 import Directions from "@/modules/Directions/Directions";
 import News from "@/components/News/News";
+import Footer from "@/modules/Footer/Footer";
+import Stats from "@/modules/Stats/Stats";
 
 export default function Home() {
     return (
@@ -10,7 +12,7 @@ export default function Home() {
             <Header/>
             <Intro/>
             <Subtitle text={"Учеба на ФКТиПМ"}/>
-            Что-то
+            <Stats/>
             <Directions/>
             <Subtitle text={"Образовательные программы обучения"}/>
             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto aspernatur cupiditate
@@ -88,6 +90,7 @@ export default function Home() {
                 nemo quo rem. Eius fugit nihil ullam. Adipisci aliquid earum enim fugiat mollitia natus reiciendis
                 reprehenderit similique suscipit ut.
             </div>
+            <Footer/>
         </>
     )
 }

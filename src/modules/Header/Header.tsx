@@ -6,15 +6,17 @@ import BlueButton from "@/components/BlueButton/BlueButton";
 
 export default function Header() {
     return (<header
-        className="z-50 relative backdrop-blur-sm container mx-auto flex my-4 w-full justify-around border-b border-gray-300 bg-white/40 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border lg:p-4">
+        className="z-50 relative drop-shadow-md backdrop-blur-sm container mx-auto flex my-4 w-full justify-around border-b border-gray-300 bg-white/40 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border lg:p-4">
         <div className="logo flex justify-start w-auto">
-            <Image
-                className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-                src={fpmLogo}
-                alt="FPM Logo"
-                height={80}
-                priority
-            />
+            <a href="/">
+                <Image
+                    className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert select-none"
+                    src={fpmLogo}
+                    alt="FPM Logo"
+                    height={80}
+                    priority
+                />
+            </a>
         </div>
         <nav className="flex justify-around items-center font-semibold w-3/5 text-xl">
             <a href="#" className="p-3"><span>Абитуриентам</span></a>
@@ -25,14 +27,16 @@ export default function Header() {
             <BlueButton href={"#"} text={"ПЛАТФОРМА"} className={"px-4 py-3"}/>
         </nav>
         <div className="tools flex justify-end w-auto">
-            <Image
-                className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] light:invert mx-8 dark:invert"
-                src={search}
-                alt="search"
-                height={28}
-                priority
-            />
-            <button className="font-bold text-lg">EN</button>
+            <button>
+                <Image
+                    className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] light:invert mx-8 dark:invert select-none"
+                    src={search}
+                    alt="search"
+                    height={28}
+                    priority
+                />
+            </button>
+            <button className="font-bold text-lg select-none">EN</button>
         </div>
     </header>)
 }
