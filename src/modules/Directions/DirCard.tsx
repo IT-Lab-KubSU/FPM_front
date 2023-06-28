@@ -27,7 +27,6 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
         <div onClick={(el) => {
             const closeAll = () => {
                 $(".panel").each(function (i) {
-                    console.log(i, index)
                     if (i === index)
                         return
                     $(this).slideUp();

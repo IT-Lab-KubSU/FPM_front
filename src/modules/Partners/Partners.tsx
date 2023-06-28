@@ -77,7 +77,6 @@ export default function Partners() {
             const startDeg = Math.floor(Math.random() * 120 - 60) / Math.floor(el.getBoundingClientRect().width / 100) + 1;
             const deg = Math.floor(Math.random() * 5 + 2);
 
-            console.log(Math.floor(el.getBoundingClientRect().width / 100))
             el.animate([
                 // keyframes
                 {transform: `rotate(${deg + startDeg}deg)`},
