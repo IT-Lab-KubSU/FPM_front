@@ -2,6 +2,7 @@
 import BlueButton from "@/components/BlueButton/BlueButton";
 import Image from "next/image";
 import $ from "jquery";
+import {useEffect} from "react";
 
 interface IProps {
     index: number,
@@ -14,18 +15,26 @@ interface IProps {
 }
 
 export default function DirCard({index, title, subjects, text, img, set, cur}: IProps) {
+    useEffect(() => {
+        $(".panel").each(function () {
+            const panel = $(this);
+            $(this).parent().on("click", function () {
+                panel.slideDown();
+            })
+        })
+    }, []);
     return (<>
         <div onClick={(el) => {
-            if (index === cur)
-                return
-            $(".panel").slideUp(() => {
-                set(index);
-            })
-            if ($(el.target).hasClass("panel"))
-                $(el.target).slideDown();
-            else
-                if ($(el.target).parent().next().hasClass("panel"))
-                    $(el.target).parent().next().slideDown();
+            const closeAll = () => {
+                $(".panel").each(function (i) {
+                    console.log(i, index)
+                    if (i === index)
+                        return
+                    $(this).slideUp();
+                })
+            }
+            closeAll();
+            set(index);
         }}
              className={`bg-white px-8 py-4 w-full dark:bg-zinc-100 dark:text-zinc-800 cursor-pointer duration-700 ease-in-out rounded-3xl mb-4 text-2xl drop-shadow-md flex flex-col justify-start`}>
             <div className="flex gap-6">

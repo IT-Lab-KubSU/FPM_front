@@ -1,7 +1,9 @@
 "use client";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import $ from "jquery";
 import Subtitle from "@/components/Subtitle/Subtitle";
+import Image from "next/image";
+
 interface INewProps {
     index: number,
     item: any,
@@ -15,7 +17,7 @@ interface IControlBtnProps {
 
 const a = [
     {
-        "title": "1)Это могла быть новость, но сотрудники деканата халявят",
+        "title": "1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят",
         "img": "fpm_logo.svg",
         "date": "15 марта,2023"
     }, {
@@ -52,18 +54,18 @@ const a = [
 const NewCard = ({index, item, currentNew}: INewProps) => {
     return (<div className={`basis-1/3 relative`}>
         <div
-            className={`${(index === 1) ? `${(currentNew % 2) ? "absolute bottom-20 rotate-12" : "absolute bottom-20 -rotate-12"}` : ""} flex flex-col justify-between bg-white w-full dark:bg-zinc-100  dark:text-zinc-800 h-[100%] p-8 rounded-xl drop-shadow-md duration-700`}>
+            className={`${(index === 1) ? `rotated ${(currentNew % 2) ? "mt-[-4rem] bottom-20" : "mt-[-4rem] bottom-20"}` : ""} flex flex-col justify-between bg-white w-full dark:bg-zinc-100  dark:text-zinc-800 h-[100%] p-8 rounded-xl drop-shadow-md duration-700`}>
             <div className="newCard">
-                <img src={`/${item.img}`} alt="news" width={200}
-                     className={`rounded-xl drop-shadow-md`}></img>
+                <Image src={item.img} alt={item.title} height={150} width={200}
+                       className={`rounded-xl drop-shadow-md max-h-[150px]`}/>
                 <br/>
-                <p>{item.title}</p>
+                <p className="line-clamp-4">{item.title}</p>
             </div>
             <div className="bottom-4 text-zinc-800 absolute newCard">
                 {item.date}
             </div>
             <a href="#"
-               className={`absolute duration-500 bottom-5 right-6 scale-100 bg-[#5C83E7] z-10 hover:bg-[#4d72e5] hover:scale-125 h-12 w-12 rounded-[50%] flex justify-center items-center`}>
+               className={`absolute duration-500 bottom-4 right-4 bg-[#5C83E7] z-10 hover:bg-[#4d72e5] hover:scale-110 h-12 w-12 rounded-[50%] flex justify-center items-center`}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="white" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M17.447 2.04983C17.447 1.33937 16.8711 0.763436 16.1606 0.763437L4.58312 0.763437C3.87267 0.763437 3.29673 1.33937 3.29673 2.04983C3.29673 2.76028 3.87267 3.33622 4.58312 3.33622L14.8742 3.33622L14.8742 13.6273C14.8742 14.3378 15.4502 14.9137 16.1606 14.9137C16.8711 14.9137 17.447 14.3378 17.447 13.6273L17.447 2.04983ZM2.49116 17.5385L17.0702 2.95944L15.251 1.14021L0.671928 15.7193L2.49116 17.5385Z"
@@ -75,7 +77,7 @@ const NewCard = ({index, item, currentNew}: INewProps) => {
 }
 const ControlBtn = ({right, onClick}: IControlBtnProps) => {
     return (<button
-        className={`h-16 w-16 rounded-[50%] scale-90 bg-[#5C83E7] z-10 hover:bg-[#4d72e5] hover:scale-95 duration-300 flex justify-center items-center ${right ? "" : "rotate-180"}`}
+        className={`h-16 w-16 p-4 rounded-[50%] bg-[#5C83E7] z-10 hover:bg-[#4d72e5] hover:scale-110 duration-300 flex justify-center items-center ${right ? "" : "rotate-180"}`}
         onClick={onClick}
     >
         <svg width="43" height="20" viewBox="0 0 43 20" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -84,10 +86,21 @@ const ControlBtn = ({right, onClick}: IControlBtnProps) => {
         </svg>
     </button>)
 }
+const rotateNew = (x: number) => {
+    const el = document.querySelector(".rotated") as HTMLElement;
+    if (x % 2)
+        $(el).css("transform", "rotate(12deg)");
+    else
+        $(el).css("transform", "rotate(-12deg)");
+}
 
 export default function News() {
     const NUM_OF_ELS = 3;
     const [currentNew, setNew] = useState(0);
+
+    useEffect(() => {
+        rotateNew(currentNew);
+    }, [])
     //px-12
     return (<>
         <Subtitle text={"Новости"}/>
@@ -98,7 +111,7 @@ export default function News() {
                 </>)}
             </div>
             <div className="ml-12 flex flex-col gap-5 justify-center text-center">
-                <h2 className="font-bold text-4xl">
+                <h2 className="font-bold text-4xl mb-12">
                     Новости Факультета
                 </h2>
                 <div className="flex justify-center items-center gap-5">
@@ -106,15 +119,15 @@ export default function News() {
                         if (currentNew - 1 < 0)
                             return
                         $(".newCard").fadeOut(() => {
+                            rotateNew(currentNew - 1);
                             setNew(Math.max(currentNew - 1, 0));
                         }).fadeIn();
-
-                        console.log(currentNew);
                     }}/>
                     <ControlBtn right={true} onClick={() => {
                         if (currentNew + 1 > a.length - NUM_OF_ELS)
                             return
                         $(".newCard").fadeOut(() => {
+                            rotateNew(currentNew + 1);
                             setNew(Math.min(currentNew + 1, a.length - NUM_OF_ELS));
                         }).fadeIn();
                     }}/>

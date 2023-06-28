@@ -2,7 +2,7 @@ import Header from "@/modules/Header/Header";
 import Intro from "@/modules/Intro/Intro";
 import Subtitle from "@/components/Subtitle/Subtitle";
 import Directions from "@/modules/Directions/Directions";
-import News from "@/components/News/News";
+import News from "@/modules/News/News";
 import Footer from "@/modules/Footer/Footer";
 import Stats from "@/modules/Stats/Stats";
 import Partners from "@/modules/Partners/Partners";

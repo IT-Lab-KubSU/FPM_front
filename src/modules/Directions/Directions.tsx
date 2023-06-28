@@ -64,10 +64,21 @@ const buttons = [
 export default function Directions() {
     const [dirButton, setButton] = useState(0);
     const [dirCard, setCard] = useState(0);
+
     useEffect(() => {
-        const el = document.querySelector(".panel") as HTMLElement;
-        $(el).slideDown();
+        $(".panel").first().slideDown();
+        $(".dirButton").each(function () {
+            $(this).on("click", function () {
+                $(".panel").each(function (i) {
+                    if (i === 0)
+                        $(this).slideDown();
+                    else
+                        $(this).slideUp();
+                })
+            })
+        })
     }, []);
+
     return (<>
         <Subtitle text={"Направления подготовки"}/>
         <div className="container my-8 mx-auto px-12">

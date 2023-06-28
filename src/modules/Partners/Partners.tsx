@@ -43,8 +43,10 @@ const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerPro
     return (
         <div className={`partner-container ${addClassContainer}`}>
             <div
-                className={`partner bg-zinc-50/40 px-6 backdrop-blur-sm drop-shadow-md py-4 rounded-3xl flex items-center ${addClassPartner}`}>
-                <Image src={image} alt={title} width={40} height={40} unoptimized={true}/>
+                className={`partner bg-zinc-50/40 px-6 backdrop-blur-sm drop-shadow-md py-4 rounded-[2rem] flex items-center ${addClassPartner}`}>
+                <div className="min-h-[40px] min-w-40 items-center flex">
+                    <Image src={image} alt={title} width={40} height={40} unoptimized={true}/>
+                </div>
                 <span className="ml-4 font-semibold text-zinc-800">{title}</span>
             </div>
         </div>)
@@ -90,7 +92,7 @@ export default function Partners() {
         });
     }, [])
     return (<>
-        <div className="container mx-auto relative max-w-[1240px] my-32">
+        <div className="container select-none mx-auto relative max-w-[1240px] my-32">
             <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
                 {data.slice(0, 4).map((item) =>
                     <><Partner title={item.title} image={item.image}/></>
