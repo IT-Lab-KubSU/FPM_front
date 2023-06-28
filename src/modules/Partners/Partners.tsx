@@ -90,7 +90,7 @@ export default function Partners() {
         });
     }, [])
     return (<>
-        <div className="container mx-auto relative max-w-[1240px]">
+        <div className="container mx-auto relative max-w-[1240px] my-32">
             <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
                 {data.slice(0, 4).map((item) =>
                     <><Partner title={item.title} image={item.image}/></>

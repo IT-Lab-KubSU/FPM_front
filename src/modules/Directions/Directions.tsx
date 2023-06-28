@@ -2,8 +2,9 @@
 import DirButton from "@/modules/Directions/DirButton";
 import Subtitle from "@/components/Subtitle/Subtitle";
 import DirCard from "@/modules/Directions/DirCard";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import dirImg from "../../../public/diractions.svg";
+import $ from "jquery";
 
 
 const buttons = [
@@ -63,6 +64,10 @@ const buttons = [
 export default function Directions() {
     const [dirButton, setButton] = useState(0);
     const [dirCard, setCard] = useState(0);
+    useEffect(() => {
+        const el = document.querySelector(".panel") as HTMLElement;
+        $(el).slideDown();
+    }, []);
     return (<>
         <Subtitle text={"Направления подготовки"}/>
         <div className="container my-8 mx-auto px-12">

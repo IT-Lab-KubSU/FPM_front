@@ -15,10 +15,11 @@ export default function Home() {
             <Subtitle text={"Учеба на ФКТиПМ"}/>
             <Stats/>
             <Directions/>
+            <News/>
+            <Subtitle text={"Образовательные программы обучения"}/>
+            <Subtitle text={"Образовательные программы обучения"}/>
             <Subtitle text={"Образовательные программы обучения"}/>
             <Partners/>
-            <Subtitle text={"Образовательные программы обучения"}/>
-            <Subtitle text={"Образовательные программы обучения"}/>
             <Footer/>
         </>
     )
