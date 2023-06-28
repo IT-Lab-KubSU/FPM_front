@@ -87,19 +87,19 @@ const ControlBtn = ({right, onClick}: IControlBtnProps) => {
     </button>)
 }
 
+const rotateNew = (x: number) => {
+    const el = document.querySelector(".rotated") as HTMLElement;
+    if (x % 2)
+        $(el).css("transform", "rotate(12deg)");
+    else
+        $(el).css("transform", "rotate(-12deg)");
+}
 
 export default function News() {
     const NUM_OF_ELS = 3;
     const [currentNew, setNew] = useState(0);
 
     useEffect(() => {
-        const rotateNew = (x: number) => {
-            const el = document.querySelector(".rotated") as HTMLElement;
-            if (x % 2)
-                $(el).css("transform", "rotate(12deg)");
-            else
-                $(el).css("transform", "rotate(-12deg)");
-        }
         rotateNew(currentNew);
     }, [currentNew])
     //px-12
