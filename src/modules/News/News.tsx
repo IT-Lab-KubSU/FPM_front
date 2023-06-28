@@ -103,7 +103,6 @@ export default function News() {
     }, [])
     //px-12
     return (<>
-        <Subtitle text={"Новости"}/>
         <div className="container mt-16 mb-8 mx-auto flex px-12">
             <div className="text-l font-medium flex gap-16 h-96">
                 {a.slice(currentNew, currentNew + NUM_OF_ELS).map((item, index) => <>

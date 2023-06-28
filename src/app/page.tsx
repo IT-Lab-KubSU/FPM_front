@@ -6,19 +6,30 @@ import News from "@/modules/News/News";
 import Footer from "@/modules/Footer/Footer";
 import Stats from "@/modules/Stats/Stats";
 import Partners from "@/modules/Partners/Partners";
+import SubtitleLayout from "@/layouts/SubtitleLayout"
 
 export default function Home() {
     return (
         <>
             <Header/>
             <Intro/>
-            <Subtitle text={"Учеба на ФКТиПМ"}/>
-            <Stats/>
-            <Directions/>
-            <News/>
+
+            <SubtitleLayout text={"Учеба на ФКТиПМ"}>
+                <Stats/>
+            </SubtitleLayout>
+
+            <SubtitleLayout text={"Направления подготовки"}>
+                <Directions/>
+            </SubtitleLayout>
+
+            <SubtitleLayout text={"Новости"}>
+                <News/>
+            </SubtitleLayout>
+
             <Subtitle text={"Образовательные программы обучения"}/>
             <Subtitle text={"Образовательные программы обучения"}/>
             <Subtitle text={"Образовательные программы обучения"}/>
+
             <Partners/>
             <Footer/>
         </>

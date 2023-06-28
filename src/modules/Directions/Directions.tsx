@@ -80,11 +80,11 @@ export default function Directions() {
     }, []);
 
     return (<>
-        <Subtitle text={"Направления подготовки"}/>
         <div className="container my-8 mx-auto px-12">
             <div className="mb-8 DirButtons">
                 {buttons.map((item, index) => <>
-                    <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard} set={setButton}/>
+                    <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
+                               set={setButton}/>
                 </>)}
             </div>
             <div className="Disclosures">
