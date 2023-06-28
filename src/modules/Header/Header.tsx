@@ -21,7 +21,7 @@ export default function Header() {
         <nav className="flex justify-around items-center font-semibold w-3/5 text-xl">
             <a href="#" className="p-3"><span>Абитуриентам</span></a>
             <a href="#" className="p-3"><span>Кафедры</span></a>
-            <a href="#" className="p-3"><span>Наши проекты</span></a>
+            <a href="#" className="p-3"><span>Проекты</span></a>
             <a href="#" className="p-3"><span>Контакты</span></a>
             <a href="#" className="p-3"><span>Студентам</span></a>
             <BlueButton href={"#"} text={"ПЛАТФОРМА"} className={"px-4 py-3"}/>
