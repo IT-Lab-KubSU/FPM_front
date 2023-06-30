@@ -10,11 +10,12 @@ interface IProps {
 
 export default function SnakeText({text, mainText}: IProps) {
     useEffect(() => {
+        console.log(window.innerHeight)
         const snakes = document.querySelectorAll<HTMLElement>(".snake");
         snakes.forEach((snake) => {
             const path = snake.querySelector<HTMLElement>("textPath");
             document.addEventListener("scroll", (event) => {
-                path?.setAttribute("startOffset", `${snake.getBoundingClientRect().y - window.scrollY}`);
+                path?.setAttribute("startOffset", `${snake.getBoundingClientRect().y + snake.getBoundingClientRect().height - window.scrollY}`);
             });
         })
     }, [])
