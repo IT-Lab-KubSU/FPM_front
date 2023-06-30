@@ -7,6 +7,7 @@ import Footer from "@/modules/Footer/Footer";
 import Stats from "@/modules/Stats/Stats";
 import Partners from "@/modules/Partners/Partners";
 import SubtitleLayout from "@/layouts/SubtitleLayout"
+import SnakeText from "@/components/SnakeText/SnakeText";
 
 export default function Home() {
     return (
@@ -17,6 +18,10 @@ export default function Home() {
             <SubtitleLayout text={"Учеба на ФКТиПМ"}>
                 <Stats/>
             </SubtitleLayout>
+
+            <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
+            <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
+            <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
 
             <SubtitleLayout text={"Направления подготовки"}>
                 <Directions/>
