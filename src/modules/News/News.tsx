@@ -104,9 +104,7 @@ export default function News() {
         <div className="container mt-16 mb-8 mx-auto flex px-12">
             <div className="text-l font-medium overflow-hidden h-[450px]"
             >
-                <div className="slider flex duration-500 h-full py-8" style={{
-                    transform: "translate(-100px, 0)"
-                }}>
+                <div className="slider flex duration-500 h-full py-8">
                     {a.map((item, index) => <>
                         <NewCard index={index} item={item} currentNew={currentNew}/>
                     </>)}
