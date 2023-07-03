@@ -5,6 +5,7 @@ import DirCard from "@/modules/Directions/DirCard";
 import {useEffect, useState} from "react";
 import dirImg from "../../../public/diractions.svg";
 import $ from "jquery";
+import {element} from "prop-types";
 
 
 const buttons = [
@@ -66,12 +67,12 @@ export default function Directions() {
     const [dirCard, setCard] = useState(0);
 
     useEffect(() => {
-        console.log(dirCard)
         $(".DirCard .panel").each(function(index) {
-            if (index === dirCard)
-                $(this).slideDown()
+            if (index === dirCard) {
+                $(this).height($(this).data("maxheight"))
+            }
             else
-                $(this).slideUp()
+                $(this).height(0)
         })
     }, [dirCard, dirButton]);
 

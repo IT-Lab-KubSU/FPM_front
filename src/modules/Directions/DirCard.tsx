@@ -28,7 +28,8 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
                     {title}
                 </div>
             </div>
-            <div className="hidden panel h-[300px] w-full">
+            <div className="panel w-full overflow-hidden duration-700" data-MaxHeight={300}
+                 style={{height: index === cur ? 300 : 0}}>
                 <div className="flex ml-16 pb-8">
                     <div className="flex flex-col justify-center">
                         <div>
