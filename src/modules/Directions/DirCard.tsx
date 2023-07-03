@@ -44,7 +44,7 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
                     {title}
                 </div>
             </div>
-            <div className="hidden panel">
+            <div className="hidden panel h-[300px]">
                 <div className="flex ml-16 pb-8">
                     <div className="flex flex-col justify-center">
                         <div>
