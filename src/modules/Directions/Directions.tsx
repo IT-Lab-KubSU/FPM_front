@@ -66,18 +66,14 @@ export default function Directions() {
     const [dirCard, setCard] = useState(0);
 
     useEffect(() => {
-        $(".panel").first().slideDown();
-        $(".dirButton").each(function () {
-            $(this).on("click", function () {
-                $(".panel").each(function (i) {
-                    if (i === 0)
-                        $(this).slideDown();
-                    else
-                        $(this).slideUp();
-                })
-            })
+        console.log(dirCard)
+        $(".DirCard .panel").each(function(index) {
+            if (index === dirCard)
+                $(this).slideDown()
+            else
+                $(this).slideUp()
         })
-    }, []);
+    }, [dirCard, dirButton]);
 
     return (<>
         <div className="container my-8 mx-auto px-12">

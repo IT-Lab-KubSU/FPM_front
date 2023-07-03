@@ -15,27 +15,11 @@ interface IProps {
 }
 
 export default function DirCard({index, title, subjects, text, img, set, cur}: IProps) {
-    useEffect(() => {
-        $(".panel").each(function () {
-            const panel = $(this);
-            $(this).parent().on("click", function () {
-                panel.slideDown();
-            })
-        })
-    }, []);
     return (<>
         <div onClick={(el) => {
-            const closeAll = () => {
-                $(".panel").each(function (i) {
-                    if (i === index)
-                        return
-                    $(this).slideUp();
-                })
-            }
-            closeAll();
-            set(index);
+            set(index)
         }}
-             className={`bg-white px-8 py-4 w-full dark:bg-zinc-100 dark:text-zinc-800 cursor-pointer duration-700 ease-in-out rounded-3xl mb-4 text-2xl drop-shadow-md flex flex-col justify-start`}>
+             className={`DirCard bg-white px-8 py-4 w-full dark:bg-zinc-100 dark:text-zinc-800 cursor-pointer duration-700 ease-in-out rounded-3xl mb-4 text-2xl drop-shadow-md flex flex-col justify-start`}>
             <div className="flex gap-6">
                 <div className="text-[#3364E2] text-4xl font-semibold">
                     {`0${index + 1}`}
@@ -44,7 +28,7 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
                     {title}
                 </div>
             </div>
-            <div className="hidden panel h-[300px]">
+            <div className="hidden panel h-[300px] w-full">
                 <div className="flex ml-16 pb-8">
                     <div className="flex flex-col justify-center">
                         <div>
