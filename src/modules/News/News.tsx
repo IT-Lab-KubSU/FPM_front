@@ -1,7 +1,6 @@
 "use client";
 import {useEffect, useState} from "react";
 import $ from "jquery";
-import Subtitle from "@/components/Subtitle/Subtitle";
 import Image from "next/image";
 
 interface INewProps {
@@ -52,9 +51,13 @@ const a = [
 ]
 
 const NewCard = ({index, item, currentNew}: INewProps) => {
-    return (<div className={`basis-1/3 relative`}>
+    return (<div className={`relative ${(index === currentNew + 1) ? "mx-12": "mx-6"}`}>
         <div
-            className={`${(index === 1) ? `rotated ${(currentNew % 2) ? "mt-[-4rem] bottom-20" : "mt-[-4rem] bottom-20"}` : ""} flex flex-col justify-between bg-white w-full dark:bg-zinc-100  dark:text-zinc-800 h-[100%] p-8 rounded-xl drop-shadow-md duration-700`}>
+            className={`flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 h-full w-[250px] p-8 rounded-xl drop-shadow-md duration-700`}
+            style={{
+                transform: (index === currentNew + 1) ? `rotate(${currentNew % 2 ? "-" : ""}12deg)` : ""
+            }}
+        >
             <div className="newCard">
                 <Image src={item.img} alt={item.title} height={150} width={200}
                        className={`rounded-xl drop-shadow-md max-h-[150px]`}/>
@@ -87,49 +90,41 @@ const ControlBtn = ({right, onClick}: IControlBtnProps) => {
     </button>)
 }
 
-const rotateNew = (x: number) => {
-    const el = document.querySelector(".rotated") as HTMLElement;
-    if (x % 2)
-        $(el).css("transform", "rotate(12deg)");
-    else
-        $(el).css("transform", "rotate(-12deg)");
-}
-
 export default function News() {
     const NUM_OF_ELS = 3;
     const [currentNew, setNew] = useState(0);
 
     useEffect(() => {
-        rotateNew(currentNew);
+        const a = $(".slider > div").outerWidth(true) as number;
+        const width = currentNew * -a
+        $(".slider").css("transform", `translate(${width}px, 0)`)
     }, [currentNew])
     //px-12
     return (<>
         <div className="container mt-16 mb-8 mx-auto flex px-12">
-            <div className="text-l font-medium flex gap-16 h-96">
-                {a.slice(currentNew, currentNew + NUM_OF_ELS).map((item, index) => <>
-                    <NewCard index={index} item={item} currentNew={currentNew}/>
-                </>)}
+            <div className="text-l font-medium overflow-hidden h-[450px]"
+            >
+                <div className="slider flex duration-500 h-full py-8" style={{
+                    transform: "translate(-100px, 0)"
+                }}>
+                    {a.map((item, index) => <>
+                        <NewCard index={index} item={item} currentNew={currentNew}/>
+                    </>)}
+                </div>
             </div>
+
             <div className="ml-12 flex flex-col gap-5 justify-center text-center">
                 <h2 className="font-bold text-4xl mb-12">
                     Новости Факультета
                 </h2>
                 <div className="flex justify-center items-center gap-5">
                     <ControlBtn onClick={() => {
-                        if (currentNew - 1 < 0)
-                            return
-                        $(".newCard").fadeOut(() => {
-                            rotateNew(currentNew - 1);
-                            setNew(Math.max(currentNew - 1, 0));
-                        }).fadeIn();
+                        setNew(Math.max(currentNew - 1, 0));
+
                     }}/>
                     <ControlBtn right={true} onClick={() => {
-                        if (currentNew + 1 > a.length - NUM_OF_ELS)
-                            return
-                        $(".newCard").fadeOut(() => {
-                            rotateNew(currentNew + 1);
-                            setNew(Math.min(currentNew + 1, a.length - NUM_OF_ELS));
-                        }).fadeIn();
+                        setNew(Math.min(currentNew + 1, a.length - NUM_OF_ELS));
+
                     }}/>
                 </div>
             </div>
