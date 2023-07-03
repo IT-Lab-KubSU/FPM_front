@@ -2,7 +2,7 @@
 import DirButton from "@/modules/Directions/DirButton";
 import Subtitle from "@/components/Subtitle/Subtitle";
 import DirCard from "@/modules/Directions/DirCard";
-import {useEffect, useState} from "react";
+import {Dispatch, useEffect, useState} from "react";
 import dirImg from "../../../public/diractions.svg";
 import $ from "jquery";
 import {element} from "prop-types";
@@ -66,31 +66,21 @@ export default function Directions() {
     const [dirButton, setButton] = useState(0);
     const [dirCard, setCard] = useState(0);
 
-    useEffect(() => {
-        $(".DirCard .panel").each(function(index) {
-            if (index === dirCard) {
-                $(this).height($(this).data("maxheight"))
-            }
-            else
-                $(this).height(0)
-        })
-    }, [dirCard, dirButton]);
 
-    return (<>
-        <div className="container my-8 mx-auto px-12">
-            <div className="mb-8 DirButtons">
-                {buttons.map((item, index) => <>
-                    <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
-                               set={setButton}/>
-                </>)}
-            </div>
-            <div className="Disclosures">
-                {buttons[dirButton].directions.map((item, index) => <>
-                    <DirCard text={item.text} index={index} subjects={item.subjects} img={item.img}
-                             title={item.title}
-                             cur={dirCard} set={setCard}/>
-                </>)}
-            </div>
+    return (<div className="container my-8 mx-auto px-12">
+        <div className="mb-8 DirButtons">
+            {buttons.map((item, index) => <>
+                <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
+                           set={setButton}/>
+            </>)}
         </div>
-    </>)
+
+        <div className="Disclosures">
+            {buttons[dirButton].directions.map((item, index) => <>
+                <DirCard text={item.text} index={index} subjects={item.subjects} img={item.img}
+                         title={item.title}
+                         cur={dirCard} set={setCard}/>
+            </>)}
+        </div>
+    </div>)
 }

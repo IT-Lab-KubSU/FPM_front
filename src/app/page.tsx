@@ -20,8 +20,6 @@ export default function Home() {
             </SubtitleLayout>
 
             <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
-            <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
-            <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
 
             <SubtitleLayout text={"Направления подготовки"}>
                 <Directions/>
