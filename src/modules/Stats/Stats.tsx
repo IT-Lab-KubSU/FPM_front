@@ -1,16 +1,11 @@
-interface IProps {
-    text: string,
-    value: number | string
-}
-
-const Stat = ({text, value}: IProps) => {
+const Stat = ({text, value}: IStatsDTO) => {
     return (<div className="flex flex-col justify-between self-stretch items-center">
         <span className="font-bold text-zinc-100 text-5xl h-20 drop-shadow-md">{value}</span>
         <span className="text-lg text-zinc-100 drop-shadow-md">{text}</span>
     </div>)
 }
 
-export default function Stats({stats}: { stats: IProps[] }) {
+export default function Stats({stats}: { stats: IStatsDTO[] }) {
     return (<>
         <div className="container mx-auto px-12 my-8 drop-shadow-md">
             <div

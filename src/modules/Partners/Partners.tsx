@@ -2,44 +2,8 @@
 import Image from "next/image";
 import {useEffect} from "react";
 import Sphere from "@/components/Sphere/Sphere";
-import {easing} from "jquery";
 
-interface IPartnerProps {
-    title: string
-    image: string
-    addClassContainer?: string
-    addClassPartner?: string
-}
-
-const data = [
-    {
-        "title": "ТИНЬКОФФ",
-        "image": "https://acdn.tinkoff.ru/static/documents/d6400f9d-63bb-4076-b887-7aa967baf8a9.svg"
-    }, {
-        "title": "ПРОДОКТОРОВ",
-        "image": "https://prodoctorov.ru/static/img/PD_big2.png"
-    }, {
-        "title": "ГАЗПРОМ",
-        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
-    }, {
-        "title": "РОСНЕФТЬ",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Rosneft_201x_logo.svg/2560px-Rosneft_201x_logo.svg.png"
-    }, {
-        "title": "ГАЗПРОМ",
-        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
-    }, {
-        "title": "МТС",
-        "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
-    }, {
-        "title": "МТС",
-        "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
-    }, {
-        "title": "CarXTechnologies",
-        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
-    }
-]
-
-const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerProps) => {
+const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO) => {
     return (
         <div className={`partner-container ${addClassContainer}`}>
             <div
@@ -52,7 +16,7 @@ const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerPro
         </div>)
 }
 
-export default function Partners() {
+export default function Partners({partners} :{partners: IPartnerDTO[]}) {
     useEffect(() => {
         document.querySelectorAll<HTMLElement>(".partner-container").forEach((el) => {
             const x = Math.floor(Math.random() * 40 - 20);
@@ -93,7 +57,7 @@ export default function Partners() {
     return (<>
         <div className="select-none container mx-auto relative max-w-[1240px] my-32">
             <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
-                {data.slice(0, 4).map((item, index) =>
+                {partners.slice(0, 4).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
             </div>
@@ -102,7 +66,7 @@ export default function Partners() {
                 Наши партнеры
             </h2>
             <div className="flex justify-between mb-8 mt-2 lg:px-[5rem]">
-                {data.slice(4, 8).map((item, index) =>
+                {partners.slice(4, 8).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
             </div>

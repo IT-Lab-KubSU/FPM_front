@@ -8,8 +8,8 @@ import Stats from "@/modules/Stats/Stats";
 import Partners from "@/modules/Partners/Partners";
 import SubtitleLayout from "@/layouts/SubtitleLayout"
 import SnakeText from "@/components/SnakeText/SnakeText";
-import Link from "next/link";
 import Teachers from "@/modules/Teachers/Teachers";
+import dirImg from "../../public/diractions.svg";
 
 
 const teachers: ITeacherDTO[] = [
@@ -127,7 +127,35 @@ const teachers: ITeacherDTO[] = [
     }
 ]
 
-const stats = [
+const partners: IPartnerDTO[] = [
+    {
+        "title": "ТИНЬКОФФ",
+        "image": "https://acdn.tinkoff.ru/static/documents/d6400f9d-63bb-4076-b887-7aa967baf8a9.svg"
+    }, {
+        "title": "ПРОДОКТОРОВ",
+        "image": "https://prodoctorov.ru/static/img/PD_big2.png"
+    }, {
+        "title": "ГАЗПРОМ",
+        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+    }, {
+        "title": "РОСНЕФТЬ",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Rosneft_201x_logo.svg/2560px-Rosneft_201x_logo.svg.png"
+    }, {
+        "title": "ГАЗПРОМ",
+        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+    }, {
+        "title": "МТС",
+        "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
+    }, {
+        "title": "МТС",
+        "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
+    }, {
+        "title": "CarXTechnologies",
+        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+    }
+]
+
+const stats: IStatsDTO[] = [
     {
         "text": "Направления",
         "value": 4
@@ -145,7 +173,7 @@ const stats = [
         "value": 4
     }
 ]
-const news = [
+const news: INewDTO[] = [
     {
         "title": "1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят",
         "image": "fpm_logo.svg",
@@ -180,6 +208,59 @@ const news = [
         "date": "15 марта,2023"
     }
 ]
+const directions: IDirectionDTO[] = [
+    {
+        "buttonText": "Бакалавриат",
+        "directions": [
+            {
+                "title": "Прикладная математика и информатика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }, {
+                "title": "Математическое обеспечение и системное администрирование",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }, {
+                "title": "Фундаментальная математика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }, {
+                "title": "Прикладная информатика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            },
+        ]
+    }, {
+        "buttonText": "Магистратура",
+        "directions": [
+            {
+                "title": "Прикладная математика и информатика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }, {
+                "title": "Фундаментальная математика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }
+        ]
+    }, {
+        "buttonText": "Аспирантура",
+        "directions": [
+            {
+                "title": "Прикладная математика и информатика",
+                "subjects": "Математика, Информатика и ИКТ, Русский язык",
+                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                "image": dirImg,
+            }
+        ]
+    }
+]
 export default function Home() {
     return (
         <>
@@ -195,7 +276,7 @@ export default function Home() {
             <SnakeText text={"мы обучаем специалистов"} mainText={"100лет "}/>
 
             <SubtitleLayout text={"Направления подготовки"}>
-                <Directions/>
+                <Directions directions={directions}/>
             </SubtitleLayout>
 
             <SubtitleLayout text={"Новости"}>
@@ -210,7 +291,7 @@ export default function Home() {
             <Subtitle text={"Образовательные программы обучения"}/>
             <Subtitle text={"Образовательные программы обучения"}/>
 
-            <Partners/>
+            <Partners partners={partners}/>
             <Footer/>
         </>
     )

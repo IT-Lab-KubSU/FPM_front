@@ -7,12 +7,12 @@ interface IProps {
     title: string,
     text: string,
     subjects: string,
-    img: string,
+    image: string,
     cur: any,
     set: any,
 }
 
-export default function DirCard({index, title, subjects, text, img, set, cur}: IProps) {
+export default function DirCard({index, title, subjects, text, image, set, cur}: IProps) {
     return (<>
         <div onClick={() => {
             set(index)
@@ -45,7 +45,7 @@ export default function DirCard({index, title, subjects, text, img, set, cur}: I
                     </div>
                     <div>
                         <Image
-                            src={img}
+                            src={image}
                             alt="direction"
                             height={300}
                         />

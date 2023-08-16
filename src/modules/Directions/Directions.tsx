@@ -8,76 +8,22 @@ import $ from "jquery";
 import {element} from "prop-types";
 
 
-const buttons = [
-    {
-        "buttonText": "Бакалавриат",
-        "directions": [
-            {
-                "title": "Прикладная математика и информатика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }, {
-                "title": "Математическое обеспечение и системное администрирование",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }, {
-                "title": "Фундаментальная математика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }, {
-                "title": "Прикладная информатика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            },
-        ]
-    }, {
-        "buttonText": "Магистратура",
-        "directions": [
-            {
-                "title": "Прикладная математика и информатика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }, {
-                "title": "Фундаментальная математика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }
-        ]
-    }, {
-        "buttonText": "Аспирантура",
-        "directions": [
-            {
-                "title": "Прикладная математика и информатика",
-                "subjects": "Математика, Информатика и ИКТ, Русский язык",
-                "text": "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
-                "img": dirImg,
-            }
-        ]
-    }
-]
-
-export default function Directions() {
+export default function Directions({directions}: {directions: IDirectionDTO[]}) {
     const [dirButton, setButton] = useState(0);
     const [dirCard, setCard] = useState(0);
 
 
     return (<div className="container my-8 px-12 mx-auto">
         <div className="mb-8 DirButtons flex flex-nowrap gap-8">
-            {buttons.map((item, index) => <>
+            {directions.map((item, index) => <>
                 <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
                            set={setButton}/>
             </>)}
         </div>
 
         <div className="Disclosures">
-            {buttons[dirButton].directions.map((item, index) => <>
-                <DirCard text={item.text} index={index} subjects={item.subjects} img={item.img}
+            {directions[dirButton].directions.map((item, index) => <>
+                <DirCard text={item.text} index={index} subjects={item.subjects} image={item.image}
                          title={item.title}
                          cur={dirCard} set={setCard}/>
             </>)}

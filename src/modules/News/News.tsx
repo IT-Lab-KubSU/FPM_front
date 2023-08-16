@@ -3,18 +3,13 @@ import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import Image from "next/image";
 
-interface INewProps {
-    title: string,
-    image: string,
-    date: string,
-}
 
 interface IControlBtnProps {
     right?: boolean,
     onClick: any
 }
 
-const NewCard = ({index, item, currentNew}: { index: number, item: INewProps, currentNew: number }) => {
+const NewCard = ({index, item, currentNew}: { index: number, item: INewDTO, currentNew: number }) => {
     return (<div className={`relative ${(index === currentNew + 1) ? "mx-12" : "mx-6"} h-full`}>
         <div
             className={`flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 h-full w-[250px] p-8 rounded-xl drop-shadow-md duration-700`}
@@ -54,7 +49,7 @@ const ControlBtn = ({right, onClick}: IControlBtnProps) => {
     </button>)
 }
 
-export default function News({news}: { news: INewProps[] }) {
+export default function News({news}: { news: INewDTO[] }) {
     const NUM_OF_ELEMENTS = 3;
     const slider = useRef(null);
     const [currentNew, setNew] = useState(0);
