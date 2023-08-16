@@ -91,10 +91,10 @@ export default function Partners() {
         });
     }, [])
     return (<>
-        <div className="container select-none mx-auto relative max-w-[1240px] my-32">
+        <div className="select-none container mx-auto relative max-w-[1240px] my-32">
             <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
-                {data.slice(0, 4).map((item) =>
-                    <><Partner title={item.title} image={item.image}/></>
+                {data.slice(0, 4).map((item, index) =>
+                    <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
             </div>
             <Sphere addClass={"left-[40%] top-[-1rem]"} size={350} bgColor={"rgb(227,57,57)"} opacity={.2}/>
@@ -102,8 +102,8 @@ export default function Partners() {
                 Наши партнеры
             </h2>
             <div className="flex justify-between mb-8 mt-2 lg:px-[5rem]">
-                {data.slice(4, 8).map((item) =>
-                    <><Partner title={item.title} image={item.image}/></>
+                {data.slice(4, 8).map((item, index) =>
+                    <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
             </div>
         </div>

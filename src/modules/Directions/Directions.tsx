@@ -67,7 +67,7 @@ export default function Directions() {
     const [dirCard, setCard] = useState(0);
 
 
-    return (<div className="container my-8 mx-auto px-12">
+    return (<div className="container my-8 px-12 mx-auto">
         <div className="mb-8 DirButtons flex flex-nowrap gap-8">
             {buttons.map((item, index) => <>
                 <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}

@@ -1,12 +1,12 @@
 "use client";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import Image from "next/image";
 
 interface INewProps {
-    index: number,
-    item: any,
-    currentNew: number
+    title: string,
+    image: string,
+    date: string,
 }
 
 interface IControlBtnProps {
@@ -14,44 +14,8 @@ interface IControlBtnProps {
     onClick: any
 }
 
-const a = [
-    {
-        "title": "1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят1)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "fpm_logo.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "2)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "fpm_logo.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "3)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "fpm_logo.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "4)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "fpm_logo.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "5)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "next.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "6)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "fpm_logo.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "7)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "vercel.svg",
-        "date": "15 марта,2023"
-    }, {
-        "title": "8)Это могла быть новость, но сотрудники деканата халявят",
-        "img": "vercel.svg",
-        "date": "15 марта,2023"
-    }
-]
-
-const NewCard = ({index, item, currentNew}: INewProps) => {
-    return (<div className={`relative ${(index === currentNew + 1) ? "mx-12": "mx-6"}`}>
+const NewCard = ({index, item, currentNew}: { index: number, item: INewProps, currentNew: number }) => {
+    return (<div className={`relative ${(index === currentNew + 1) ? "mx-12" : "mx-6"} h-full`}>
         <div
             className={`flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 h-full w-[250px] p-8 rounded-xl drop-shadow-md duration-700`}
             style={{
@@ -59,7 +23,7 @@ const NewCard = ({index, item, currentNew}: INewProps) => {
             }}
         >
             <div className="newCard">
-                <Image src={item.img} alt={item.title} height={150} width={200}
+                <Image src={item.image} alt={item.title} height={150} width={200}
                        className={`rounded-xl drop-shadow-md max-h-[150px]`}/>
                 <br/>
                 <p className="line-clamp-4">{item.title}</p>
@@ -90,23 +54,27 @@ const ControlBtn = ({right, onClick}: IControlBtnProps) => {
     </button>)
 }
 
-export default function News() {
-    const NUM_OF_ELS = 3;
+export default function News({news}: { news: INewProps[] }) {
+    const NUM_OF_ELEMENTS = 3;
+    const slider = useRef(null);
     const [currentNew, setNew] = useState(0);
 
     useEffect(() => {
-        const a = $(".slider > div").outerWidth(true) as number;
-        const width = currentNew * -a
-        $(".slider").css("transform", `translate(${width}px, 0)`)
+        if (!slider.current)
+            return
+        const outerWidth = $(slider.current).children(".slide").outerWidth(true) as number;
+        const width = currentNew * -outerWidth
+        $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentNew])
-    //px-12
+
     return (<>
-        <div className="container mt-16 mb-8 mx-auto flex px-12">
-            <div className="text-l font-medium overflow-hidden h-[450px]"
-            >
-                <div className="slider flex duration-500 h-full py-8">
-                    {a.map((item, index) => <>
-                        <NewCard index={index} item={item} currentNew={currentNew}/>
+        <div className="news container mt-16 mb-8 mx-auto flex px-12">
+            <div className="text-l font-medium overflow-hidden h-[450px]">
+                <div ref={slider} className="slider flex duration-500 h-full py-8">
+                    {news.map((item, index) => <>
+                        <div className={"slide"}>
+                            <NewCard index={index} item={item} currentNew={currentNew} key={index}/>
+                        </div>
                     </>)}
                 </div>
             </div>
@@ -118,11 +86,9 @@ export default function News() {
                 <div className="flex justify-center items-center gap-5">
                     <ControlBtn onClick={() => {
                         setNew(Math.max(currentNew - 1, 0));
-
                     }}/>
                     <ControlBtn right={true} onClick={() => {
-                        setNew(Math.min(currentNew + 1, a.length - NUM_OF_ELS));
-
+                        setNew(Math.min(currentNew + 1, news.length - NUM_OF_ELEMENTS));
                     }}/>
                 </div>
             </div>

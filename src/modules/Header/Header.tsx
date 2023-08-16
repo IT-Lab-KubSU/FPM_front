@@ -6,7 +6,7 @@ import BlueButton from "@/components/BlueButton/BlueButton";
 
 export default function Header() {
     return (<header
-        className="z-50 relative drop-shadow-md backdrop-blur-sm container mx-auto flex my-4 w-full justify-around border-b border-gray-300 bg-white/40 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border lg:p-4">
+        className="z-50 relative drop-shadow-md backdrop-blur-sm mx-auto container flex my-4 w-full justify-around border-b border-gray-300 bg-white/40 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border lg:p-4">
         <div className="logo flex justify-start w-auto">
             <a href="/">
                 <Image
