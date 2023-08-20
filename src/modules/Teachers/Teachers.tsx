@@ -6,7 +6,7 @@ export default function Teachers({teachers}: { teachers: ITeacherDTO[] }) {
     return <div className="container mb-8 mx-auto px-12">
         <Slider title={"Ведущие преподаватели"}>
             {teachers.map((teacher, index) => <>
-                <TeacherCard teacher={teacher}/>
+                <TeacherCard teacher={teacher} key={index}/>
             </>)}
         </Slider>
     </div>

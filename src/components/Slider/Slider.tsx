@@ -1,28 +1,22 @@
 "use client"
 import {
     MouseEventHandler,
-    TouchEventHandler,
-    UIEventHandler,
     useEffect,
     useRef,
     useState,
-    WheelEventHandler
 } from "react";
 import $ from "jquery";
-import SubtitleLayout from "@/layouts/SubtitleLayout";
-import {text} from "stream/consumers";
-import ClickEvent = JQuery.ClickEvent;
 
 function Dot({active, onClick}: { active: boolean, onClick: MouseEventHandler }) {
     return <>
         <span onClick={onClick}
-              className={`h-1 w-full rounded-3xl block ${active ? "bg-[#5C83E7]" : "bg-zinc-300"}`}></span>
+              className={`h-1 w-full rounded-3xl block duration-500 ${active ? "bg-[#5C83E7]" : "bg-zinc-300"}`}></span>
     </>
 }
 
 function SliderButton({text, onClick}: { text: string, onClick: MouseEventHandler }) {
     return <button onClick={onClick}
-                   className={"duration-500 rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-zinc-100"}>{text}</button>
+                   className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white"}>{text}</button>
 }
 
 export default function Slider({children, title}: { children: React.ReactNode[], title: string }) {
@@ -81,12 +75,7 @@ export default function Slider({children, title}: { children: React.ReactNode[],
 
     return <>
         <div className={"container mx-auto h-full"}>
-            <div className={"flex justify-between"}>
-                <div className={"flex gap-2"}>
-                    <SliderButton text={"<"} onClick={() => prevSlide(NUM_OF_ELEMENTS)}/>
-                    <SliderButton text={">"} onClick={() => nextSlide(NUM_OF_ELEMENTS)}/>
-                </div>
-            </div>
+
             <div onWheel={scroll} onTouchStart={swipeStart} onTouchEnd={swipeEnd} className={"overflow-hidden"}>
                 <div ref={slider} className={"slider my-4 flex flex-nowrap duration-500 ease-in-out"}>
                     {children.map((child) => <>
@@ -100,6 +89,10 @@ export default function Slider({children, title}: { children: React.ReactNode[],
                 {children.map((child, index) => <><Dot onClick={() => {
                     setSlide(Math.min(index, length - NUM_OF_ELEMENTS))
                 }} active={currentSlide <= index && index < currentSlide + NUM_OF_ELEMENTS} key={index}/></>)}
+                <div className={"flex gap-2 px-2"}>
+                    <SliderButton text={"<"} onClick={() => prevSlide(NUM_OF_ELEMENTS)}/>
+                    <SliderButton text={">"} onClick={() => nextSlide(NUM_OF_ELEMENTS)}/>
+                </div>
             </div>
         </div>
     </>
