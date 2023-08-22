@@ -1,0 +1,169 @@
+"use client"
+import BlueButton from "@/components/BlueButton/BlueButton";
+import Link from "next/link";
+import './Feedback.css'
+import {Dispatch, SetStateAction, useRef, useState} from "react";
+
+const TextInput = ({name, type, placeholder}: { name: string, type: string, placeholder: string }) => {
+    return <>
+        <input className={"rounded-lg drop-shadow-md py-4 px-6 w-full"} type={"text"} name={name}
+               placeholder={placeholder}/>
+    </>
+}
+
+const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
+    let start = ""
+
+    if (phone.startsWith("+"))
+        start = "+"
+
+    phone = phone.replace(/\D/g, '')
+    if (phone.length > 13)
+        return
+    phone = phone.replace(/(\d{1,3})(\d{3})(\d{3})(\d{4})$/g, function (a, b, c, d, e) {
+        let ret = "";
+        if (b != "")
+            ret = b;
+        if (c != "")
+            ret = ret + "(" + c;
+        if (d != "")
+            ret = ret + ")" + d;
+        if (e != "")
+            ret = ret + "-" + e;
+        return ret;
+    })
+    setF(start + phone)
+}
+export default function Feedback() {
+    const [disabled, setDisabled] = useState(false)
+    const [value, setValue] = useState('')
+    const [phoneError, setPhoneError] = useState(false)
+    const [nameError, setNameError] = useState(false)
+    const [emailError, setEmailError] = useState(false)
+    const sendApplication = () => {
+        const phone = document.querySelector<HTMLInputElement>('#phone')
+        const name = document.querySelector<HTMLInputElement>('#name')
+        const email = document.querySelector<HTMLInputElement>('#email')
+
+        if (!(phone && name && email))
+            return
+
+        const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+        const phoneRegexp = new RegExp('^[\\+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$')
+
+        if (!phoneRegexp.test(phone.value))
+            setPhoneError(true)
+        else
+            setPhoneError(false)
+
+        if (!emailRegexp.test(email.value))
+            setEmailError(true)
+        else
+            setEmailError(false)
+
+        if (!name.value)
+            setNameError(true)
+        else
+            setNameError(false)
+
+        if (phoneError || nameError || emailError)
+            return
+    }
+
+
+    return <>
+        <div id={"feedback"} className={"container my-8 px-12 mx-auto"}>
+            <div className={"rounded-2xl bg-[#A5B9ECC4] px-12 py-8 drop-shadow-lg"}>
+                <div className={"mb-12"}>
+                    <span className={"font-bold text-3xl text-zinc-900"}>
+                        Оставить заявку на поступление
+                    </span>
+                </div>
+                <div className={"flex flex-col gap-4 my-4 xl:flex-row"}>
+                    <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${nameError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
+                           onInput={
+                               (el) => {
+                                   const name = el.currentTarget
+                                   if (!name.value)
+                                       setPhoneError(true)
+                                   else
+                                       setPhoneError(false)
+                               }
+                           }
+                           id={"name"}
+                           type={"text"}
+                           name={"name"}
+                           placeholder={"Имя"}
+                           required={true}/>
+                    <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${phoneError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
+                           id={"phone"}
+                           onInput={
+                               (el) => {
+                                   const phone = el.currentTarget
+                                   validatePhone(phone.value, setValue)
+                                   const phoneRegexp = new RegExp('^[\\+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$')
+
+                                   if (!phoneRegexp.test(phone.value))
+                                       setPhoneError(true)
+                                   else
+                                       setPhoneError(false)
+                               }
+                           }
+                           onSelect={
+                               (el) => {
+                                   const input = el.target as HTMLElement
+                                   input.setAttribute("placeholder", "+_(___)___-____")
+                               }
+                           }
+                           onBlur={
+                               (el) => {
+                                   const input = el.target as HTMLElement
+                                   input.setAttribute("placeholder", "Номер телефона")
+                               }
+                           }
+                           value={value}
+                           type={"tel"}
+                           name={"phone"}
+                           placeholder={"Номер телефона"}
+                           pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"}
+                           required={true}/>
+                    <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${emailError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
+                           onInput={(el) => {
+                               const email = el.currentTarget
+                               const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+                               if (!emailRegexp.test(email.value))
+                                   setEmailError(true)
+                               else
+                                   setPhoneError(false)
+                           }}
+                           id={"email"}
+                           type={"text"}
+                           name={"email"}
+                           placeholder={"Почта"}
+                           required={true}/>
+                    <BlueButton disabled={disabled}
+                                className={"py-4 px-6 w-full rounded-lg"}
+                                onClick={sendApplication}
+                                text={"Подать заявку"}
+                    />
+                </div>
+
+                <input onChange={
+                    () => setDisabled((prevState) => !prevState)
+                }
+                       type="checkbox"
+                       className="custom-checkbox"
+                       name="policy"
+                       id="policy"
+                       checked={!disabled}
+                       required={true}/>
+                <label htmlFor="policy">
+                    <span className={"ml-2 text-zinc-900 md:text-md text-sm"}>
+                        Я даю согласие на обработку персональных данных, согласен на получение информационных рассылок от КубГУ и соглашаюсь c
+                        <Link href="" className={"font-bold"}> политикой конфиденциальности</Link>.
+                    </span>
+                </label>
+            </div>
+        </div>
+    </>
+}

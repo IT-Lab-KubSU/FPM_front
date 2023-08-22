@@ -14,6 +14,7 @@ import {partners} from "@/app/partners";
 import {stats} from "@/app/stats";
 import {news} from "@/app/news";
 import {directions} from "@/app/directions";
+import Feedback from "@/modules/Feedback/Feedback";
 
 
 export default function Home() {
@@ -46,6 +47,7 @@ export default function Home() {
             <Subtitle text={"Образовательные программы обучения"}/>
 
             <Partners partners={partners}/>
+            <Feedback/>
             <Footer/>
         </>
     )
