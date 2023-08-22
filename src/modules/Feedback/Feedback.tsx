@@ -35,8 +35,8 @@ const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) =>
     setF(start + phone)
 }
 export default function Feedback() {
-    const [disabled, setDisabled] = useState(false)
-    const [value, setValue] = useState('')
+    const [disabledCheckbox, setDisabled] = useState(false)
+    const [phoneValue, setPhoneValue] = useState('')
     const [phoneError, setPhoneError] = useState(false)
     const [nameError, setNameError] = useState(false)
     const [emailError, setEmailError] = useState(false)
@@ -45,7 +45,7 @@ export default function Feedback() {
         const name = document.querySelector<HTMLInputElement>('#name')
         const email = document.querySelector<HTMLInputElement>('#email')
 
-        if (!(phone && name && email))
+        if (!(phone && name && email) || disabledCheckbox)
             return
 
         const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
@@ -66,13 +66,14 @@ export default function Feedback() {
         else
             setNameError(false)
 
-        if (phoneError || nameError || emailError)
+        if (phoneError || nameError || emailError || disabledCheckbox)
             return
+        console.log("Send application")
     }
 
 
     return <>
-        <div id={"feedback"} className={"container my-8 px-12 mx-auto"}>
+        <div id={"feedback"} className={"container my-12 px-12 mx-auto"}>
             <div className={"rounded-2xl bg-[#A5B9ECC4] px-12 py-8 drop-shadow-lg"}>
                 <div className={"mb-12"}>
                     <span className={"font-bold text-3xl text-zinc-900"}>
@@ -83,11 +84,7 @@ export default function Feedback() {
                     <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${nameError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
                            onInput={
                                (el) => {
-                                   const name = el.currentTarget
-                                   if (!name.value)
-                                       setPhoneError(true)
-                                   else
-                                       setPhoneError(false)
+                                   setPhoneError(false)
                                }
                            }
                            id={"name"}
@@ -99,29 +96,23 @@ export default function Feedback() {
                            id={"phone"}
                            onInput={
                                (el) => {
-                                   const phone = el.currentTarget
-                                   validatePhone(phone.value, setValue)
-                                   const phoneRegexp = new RegExp('^[\\+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$')
-
-                                   if (!phoneRegexp.test(phone.value))
-                                       setPhoneError(true)
-                                   else
-                                       setPhoneError(false)
+                                   validatePhone(el.currentTarget.value, setPhoneValue)
+                                   setPhoneError(false)
                                }
                            }
                            onSelect={
                                (el) => {
-                                   const input = el.target as HTMLElement
+                                   const input = el.currentTarget as HTMLElement
                                    input.setAttribute("placeholder", "+_(___)___-____")
                                }
                            }
                            onBlur={
                                (el) => {
-                                   const input = el.target as HTMLElement
+                                   const input = el.currentTarget as HTMLElement
                                    input.setAttribute("placeholder", "Номер телефона")
                                }
                            }
-                           value={value}
+                           value={phoneValue}
                            type={"tel"}
                            name={"phone"}
                            placeholder={"Номер телефона"}
@@ -129,19 +120,14 @@ export default function Feedback() {
                            required={true}/>
                     <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${emailError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
                            onInput={(el) => {
-                               const email = el.currentTarget
-                               const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
-                               if (!emailRegexp.test(email.value))
-                                   setEmailError(true)
-                               else
-                                   setPhoneError(false)
+                               setPhoneError(false)
                            }}
                            id={"email"}
                            type={"text"}
                            name={"email"}
                            placeholder={"Почта"}
                            required={true}/>
-                    <BlueButton disabled={disabled}
+                    <BlueButton disabled={disabledCheckbox}
                                 className={"py-4 px-6 w-full rounded-lg"}
                                 onClick={sendApplication}
                                 text={"Подать заявку"}
@@ -155,7 +141,7 @@ export default function Feedback() {
                        className="custom-checkbox"
                        name="policy"
                        id="policy"
-                       checked={!disabled}
+                       checked={!disabledCheckbox}
                        required={true}/>
                 <label htmlFor="policy">
                     <span className={"ml-2 text-zinc-900 md:text-md text-sm"}>
