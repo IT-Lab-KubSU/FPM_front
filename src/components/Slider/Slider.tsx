@@ -19,7 +19,7 @@ function SliderButton({text, onClick}: { text: string, onClick: MouseEventHandle
                    className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white"}>{text}</button>
 }
 
-export default function Slider({children, title}: { children: React.ReactNode[], title: string }) {
+export default function Slider({children}: { children: React.ReactNode[]}) {
     const length = children.length;
     const OFFSET = 50;
     const NUM_OF_ELEMENTS = Math.min(3, length);

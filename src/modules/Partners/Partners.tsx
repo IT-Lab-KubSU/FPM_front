@@ -2,6 +2,7 @@
 import Image from "next/image";
 import {useEffect} from "react";
 import Sphere from "@/components/Sphere/Sphere";
+import ContainerLayout from "@/layouts/ContainerLayout";
 
 const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO) => {
     return (
@@ -54,8 +55,8 @@ export default function Partners({partners} :{partners: IPartnerDTO[]}) {
             });
         });
     }, [])
-    return (<>
-        <div className="select-none container mx-auto relative max-w-[1240px] my-32">
+    return <ContainerLayout>
+        <div className="select-none relative max-w-[1240px] my-48">
             <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
                 {partners.slice(0, 4).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index}/></>
@@ -71,5 +72,5 @@ export default function Partners({partners} :{partners: IPartnerDTO[]}) {
                 )}
             </div>
         </div>
-    </>)
+    </ContainerLayout>
 }

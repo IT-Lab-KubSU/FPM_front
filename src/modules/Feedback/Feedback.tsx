@@ -4,13 +4,6 @@ import Link from "next/link";
 import './Feedback.css'
 import {Dispatch, SetStateAction, useRef, useState} from "react";
 
-const TextInput = ({name, type, placeholder}: { name: string, type: string, placeholder: string }) => {
-    return <>
-        <input className={"rounded-lg drop-shadow-md py-4 px-6 w-full"} type={"text"} name={name}
-               placeholder={placeholder}/>
-    </>
-}
-
 const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
     let start = ""
 

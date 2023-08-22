@@ -2,6 +2,7 @@
 import DirButton from "@/modules/Directions/DirButton";
 import DirCard from "@/modules/Directions/DirCard";
 import {useState} from "react";
+import ContainerLayout from "@/layouts/ContainerLayout";
 
 
 export default function Directions({directions}: {directions: IDirectionDTO[]}) {
@@ -9,7 +10,7 @@ export default function Directions({directions}: {directions: IDirectionDTO[]}) 
     const [dirCard, setCard] = useState(0);
 
 
-    return (<div className="container my-8 px-12 mx-auto">
+    return (<ContainerLayout>
         <div className="mb-8 DirButtons flex flex-nowrap gap-8">
             {directions.map((item, index) => <>
                 <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
@@ -24,5 +25,5 @@ export default function Directions({directions}: {directions: IDirectionDTO[]}) 
                          cur={dirCard} set={setCard} key={index}/>
             </>)}
         </div>
-    </div>)
+    </ContainerLayout>)
 }

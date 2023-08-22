@@ -38,13 +38,13 @@ export default function Home() {
                 <News news={news}/>
             </SubtitleLayout>
 
-            <Subtitle text={"Образовательные программы обучения"}/>
-            <SubtitleLayout text={"Ведущие преподаватели"}>
-                <Teachers teachers={teachers}/>
-            </SubtitleLayout>
+            {/*<Subtitle text={"Образовательные программы обучения"}/>*/}
+            {/*<SubtitleLayout text={"Ведущие преподаватели"}>*/}
+            {/*    <Teachers teachers={teachers}/>*/}
+            {/*</SubtitleLayout>*/}
 
-            <Subtitle text={"Образовательные программы обучения"}/>
-            <Subtitle text={"Образовательные программы обучения"}/>
+            {/*<Subtitle text={"Образовательные программы обучения"}/>*/}
+            {/*<Subtitle text={"Образовательные программы обучения"}/>*/}
 
             <Partners partners={partners}/>
             <Feedback/>
