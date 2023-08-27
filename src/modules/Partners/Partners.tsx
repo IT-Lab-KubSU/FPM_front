@@ -68,7 +68,7 @@ export default function Partners({partners} :{partners: IPartnerDTO[]}) {
             </h2>
             <div className="flex justify-between mb-8 mt-2 lg:px-[5rem]">
                 {partners.slice(4, 8).map((item, index) =>
-                    <><Partner title={item.title} image={item.image} key={index}/></>
+                    <><Partner title={item.title} image={item.image} key={index + 4}/></>
                 )}
             </div>
         </div>
