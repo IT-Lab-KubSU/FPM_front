@@ -2,7 +2,7 @@ import Image from "next/image";
 import ContentBox from "@/layouts/ContentBox";
 import {forwardRef, useImperativeHandle, useState} from "react";
 
-type ModalHandle = {
+export type ModalHandle = {
     setVisible: () => void;
 };
 

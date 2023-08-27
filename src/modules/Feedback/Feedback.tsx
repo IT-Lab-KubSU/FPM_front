@@ -3,7 +3,7 @@ import BlueButton from "@/components/BlueButton/BlueButton";
 import Link from "next/link";
 import './Feedback.css'
 import {Dispatch, SetStateAction, useRef, useState} from "react";
-import {Modal} from "@/components/Modal/Modal";
+import {Modal, ModalHandle} from "@/components/Modal/Modal";
 
 const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
     let start = ""
@@ -34,12 +34,12 @@ export default function Feedback() {
     const [phoneError, setPhoneError] = useState(false)
     const [nameError, setNameError] = useState(false)
     const [emailError, setEmailError] = useState(false)
-    const modalRef = useRef(Modal);
+    const modalRef = useRef<ModalHandle>();
 
     const openModal = () => {
         console.log(modalRef)
         if (modalRef.current) {
-            modalRef.current.setVisible();
+            modalRef.current?.setVisible();
         }
     };
 
