@@ -34,7 +34,7 @@ export default function Feedback() {
     const [phoneError, setPhoneError] = useState(false)
     const [nameError, setNameError] = useState(false)
     const [emailError, setEmailError] = useState(false)
-    const modalRef = useRef<ModalHandle>();
+    const modalRef = useRef<ModalHandle | null>(null);
 
     const openModal = () => {
         modalRef.current?.setVisible();
