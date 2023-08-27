@@ -37,10 +37,7 @@ export default function Feedback() {
     const modalRef = useRef<ModalHandle>();
 
     const openModal = () => {
-        console.log(modalRef)
-        if (modalRef.current) {
-            modalRef.current?.setVisible();
-        }
+        modalRef.current?.setVisible();
     };
 
     const sendApplication = () => {
