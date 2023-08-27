@@ -4,7 +4,7 @@ import Link from "next/link";
 import './Feedback.css'
 import {Dispatch, SetStateAction, useRef, useState} from "react";
 import {Modal, ModalHandle} from "@/components/Modal/Modal";
-
+// hello
 const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
     let start = ""
 
