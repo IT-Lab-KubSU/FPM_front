@@ -35,7 +35,7 @@ export default function Feedback() {
     const [nameError, setNameError] = useState(false)
     const [emailError, setEmailError] = useState(false)
     const modalRef = useRef<ModalHandle | null>(null);
-
+    // afafaf
     const openModal = () => {
         modalRef.current?.setVisible();
     };
