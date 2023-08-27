@@ -15,7 +15,7 @@ export default function BlueButton({href, text, className, onClick, disabled}: I
     return href ?
         <Link href={href}>
             <span
-                className={`bg-[#5C83E7] select-none z-10 hover:bg-[#4d72e5] relative text-white duration-500 rounded-2xl drop-shadow-md font-semibold
+                className={`bg-[#5C83E7] select-none z-10 hover:bg-[#4d72e5] text-white duration-500 rounded-2xl drop-shadow-md font-semibold
                  ${className}`}>{text}</span>
         </Link> :
         <button onClick={onClick} disabled={disabled}

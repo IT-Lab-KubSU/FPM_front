@@ -15,6 +15,8 @@ import {stats} from "@/app/stats";
 import {news} from "@/app/news";
 import {directions} from "@/app/directions";
 import Feedback from "@/modules/Feedback/Feedback";
+import AboutUs from "@/modules/AboutUs/AboutUs";
+
 
 
 export default function Home() {
@@ -32,6 +34,10 @@ export default function Home() {
 
             <SubtitleLayout text={"Направления подготовки"}>
                 <Directions directions={directions}/>
+            </SubtitleLayout>
+
+            <SubtitleLayout text={"О факультете"}>
+                <AboutUs/>
             </SubtitleLayout>
 
             <SubtitleLayout text={"Новости"}>

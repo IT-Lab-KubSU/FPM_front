@@ -3,6 +3,7 @@ import BlueButton from "@/components/BlueButton/BlueButton";
 import Link from "next/link";
 import './Feedback.css'
 import {Dispatch, SetStateAction, useRef, useState} from "react";
+import {Modal} from "@/components/Modal/Modal";
 
 const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
     let start = ""
@@ -33,6 +34,15 @@ export default function Feedback() {
     const [phoneError, setPhoneError] = useState(false)
     const [nameError, setNameError] = useState(false)
     const [emailError, setEmailError] = useState(false)
+    const modalRef = useRef(Modal);
+
+    const openModal = () => {
+        console.log(modalRef)
+        if (modalRef.current) {
+            modalRef.current.setVisible();
+        }
+    };
+
     const sendApplication = () => {
         const phone = document.querySelector<HTMLInputElement>('#phone')
         const name = document.querySelector<HTMLInputElement>('#name')
@@ -44,24 +54,29 @@ export default function Feedback() {
         const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
         const phoneRegexp = new RegExp('^[\\+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$')
 
-        if (!phoneRegexp.test(phone.value))
+        let error = false;
+
+        if (!phoneRegexp.test(phone.value)){
+            error = true
             setPhoneError(true)
-        else
+        } else
             setPhoneError(false)
 
-        if (!emailRegexp.test(email.value))
+        if (!emailRegexp.test(email.value)) {
+            error = true
             setEmailError(true)
-        else
+        } else
             setEmailError(false)
 
-        if (!name.value)
+        if (!name.value) {
+            error = true
             setNameError(true)
-        else
+        } else
             setNameError(false)
 
-        if (phoneError || nameError || emailError || disabledCheckbox)
-            return
+        if (error) return
         console.log("Send application")
+        openModal()
     }
 
 
@@ -73,7 +88,7 @@ export default function Feedback() {
                         Оставить заявку на поступление
                     </span>
                 </div>
-                <div className={"flex flex-col gap-4 my-4 xl:flex-row"}>
+                <div className={"grid grid-cols-1 gap-4 my-4 lg:grid-cols-4"}>
                     <input className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${nameError?"border-2 border-red-400 placeholder-red-600 text-red-600":""}`}
                            onInput={
                                (el) => {
@@ -144,5 +159,6 @@ export default function Feedback() {
                 </label>
             </div>
         </div>
+        <Modal ref={modalRef}/>
     </>
 }

@@ -9,8 +9,8 @@ export default function Stats({stats}: { stats: IStatsDTO[] }) {
     return (<>
         <div className="container mx-auto px-12 my-8 drop-shadow-md">
             <div
-                className="flex items-center justify-between bg-gradient-to-b px-[100px] py-[45px] from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
-                {stats.slice(0, 5).map((item, index) => <><Stat text={item.text} value={item.value} key={index}/></>)}
+                className="grid grid-cols-2 lg:grid-cols-4 gap-28 bg-gradient-to-b px-[100px] py-[45px] from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
+                {stats.slice(0, 4).map((item, index) => <><Stat text={item.text} value={item.value} key={index}/></>)}
             </div>
         </div>
     </>)

@@ -18,10 +18,10 @@ export const partners: IPartnerDTO[] = [
         "title": "МТС",
         "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
     }, {
-        "title": "МТС",
-        "image": "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
+        "title": "Сбербанк",
+        "image": "https://free-png.ru/wp-content/uploads/2020/09/icon_sber-01.png"
     }, {
-        "title": "CarXTechnologies",
-        "image": "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+        "title": "Тандер",
+        "image": "https://tmsearch.onlinepatent.ru/images/94f/94f6321a-b1f9-48a5-9817-2a76ef40151f.jpg"
     }
 ]

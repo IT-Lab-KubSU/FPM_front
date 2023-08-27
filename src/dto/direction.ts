@@ -7,5 +7,7 @@ interface IDirection {
     title: string,
     subjects: string,
     text: string,
+    forms: string[],
+    code: string,
     image: string
 }

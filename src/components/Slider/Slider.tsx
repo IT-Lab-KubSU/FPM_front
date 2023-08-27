@@ -19,16 +19,16 @@ function SliderButton({text, onClick}: { text: string, onClick: MouseEventHandle
                    className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white"}>{text}</button>
 }
 
-export default function Slider({children}: { children: React.ReactNode[]}) {
+export default function Slider({children}: { children: React.ReactNode[] }) {
     const length = children.length;
     const OFFSET = 50;
-    const NUM_OF_ELEMENTS = Math.min(3, length);
     const slider = useRef(null);
+    const [numOfElements, setNumOfElements] = useState(Math.min(3, length));
     const [currentSlide, setSlide] = useState(0);
     const [currentTouch, setTouch] = useState({currentX: 0, timestamp: 0});
 
     function nextSlide(step = 1) {
-        setSlide((prevState) => Math.min(prevState + step, length - NUM_OF_ELEMENTS))
+        setSlide((prevState) => Math.min(prevState + step, length - numOfElements))
     }
 
     function prevSlide(step = 1) {
@@ -40,7 +40,7 @@ export default function Slider({children}: { children: React.ReactNode[]}) {
         const currentTimestamp = currentTouch.timestamp;
         const touch = event.changedTouches[0];
         const speed = Math.abs(touch.screenX - currentX) / (event.timeStamp - currentTimestamp)
-        const step = speed < 5 ? 1 : NUM_OF_ELEMENTS
+        const step = speed < 5 ? 1 : numOfElements
         if (touch.screenX + OFFSET > currentX)
             return prevSlide(step)
         if (touch.screenX - OFFSET < currentX)
@@ -68,7 +68,9 @@ export default function Slider({children}: { children: React.ReactNode[]}) {
     useEffect(() => {
         if (!slider.current)
             return
+        const sliderWidth = $(slider.current).outerWidth(true) as number;
         const outerWidth = $(slider.current).children(".slide").outerWidth(true) as number;
+        setNumOfElements(Math.floor(sliderWidth/outerWidth))
         const width = currentSlide * -outerWidth
         $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentSlide])
@@ -87,11 +89,11 @@ export default function Slider({children}: { children: React.ReactNode[]}) {
             </div>
             <div className={"flex flex-row flex-nowrap items-center justify-center gap-2 px-4"}>
                 {children.map((child, index) => <><Dot onClick={() => {
-                    setSlide(Math.min(index, length - NUM_OF_ELEMENTS))
-                }} active={currentSlide <= index && index < currentSlide + NUM_OF_ELEMENTS} key={index}/></>)}
+                    setSlide(Math.min(index, length - numOfElements))
+                }} active={currentSlide <= index && index < currentSlide + numOfElements} key={index}/></>)}
                 <div className={"flex gap-2 px-2"}>
-                    <SliderButton text={"<"} onClick={() => prevSlide(NUM_OF_ELEMENTS)}/>
-                    <SliderButton text={">"} onClick={() => nextSlide(NUM_OF_ELEMENTS)}/>
+                    <SliderButton text={"<"} onClick={() => prevSlide(numOfElements)}/>
+                    <SliderButton text={">"} onClick={() => nextSlide(numOfElements)}/>
                 </div>
             </div>
         </div>

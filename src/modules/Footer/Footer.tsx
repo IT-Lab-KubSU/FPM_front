@@ -1,7 +1,9 @@
 export default function Footer() {
-    return (<footer
-        className="py-8 bg-[#2B303D] text-zinc-100 w-full">
-        <div className="mx-auto flex">
+    return (<footer className="bg-[#2B303D] text-zinc-100 w-full">
+        <div className="container my-8 px-12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eligendi obcaecati quo repellendus. Accusamus ad commodi consectetur deserunt, dolores ea eaque esse et eveniet excepturi ipsa, ipsum laudantium molestias necessitatibus nulla officia pariatur provident quaerat quidem recusandae repellendus sapiente voluptatem voluptates! Ad ducimus nihil optio. Ad adipisci aut autem cumque ducimus et, exercitationem facilis itaque nihil obcaecati omnis quam qui sapiente temporibus voluptates? Consectetur enim ex impedit labore mollitia numquam optio quis tenetur vero. Adipisci aliquam animi aperiam asperiores atque beatae blanditiis commodi dolorum eius est eum facere hic illum incidunt ipsa labore magnam maxime, modi natus necessitatibus neque nesciunt, nisi nobis obcaecati officia quae quam qui quia ratione rem suscipit ullam unde velit veniam voluptates voluptatibus voluptatum. Assumenda deleniti ea excepturi fugiat itaque provident quo, sit vero?
+            </div>
             <div>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eligendi obcaecati quo repellendus. Accusamus ad commodi consectetur deserunt, dolores ea eaque esse et eveniet excepturi ipsa, ipsum laudantium molestias necessitatibus nulla officia pariatur provident quaerat quidem recusandae repellendus sapiente voluptatem voluptates! Ad ducimus nihil optio. Ad adipisci aut autem cumque ducimus et, exercitationem facilis itaque nihil obcaecati omnis quam qui sapiente temporibus voluptates? Consectetur enim ex impedit labore mollitia numquam optio quis tenetur vero. Adipisci aliquam animi aperiam asperiores atque beatae blanditiis commodi dolorum eius est eum facere hic illum incidunt ipsa labore magnam maxime, modi natus necessitatibus neque nesciunt, nisi nobis obcaecati officia quae quam qui quia ratione rem suscipit ullam unde velit veniam voluptates voluptatibus voluptatum. Assumenda deleniti ea excepturi fugiat itaque provident quo, sit vero?
             </div>

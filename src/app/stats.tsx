@@ -11,8 +11,5 @@ export const stats: IStatsDTO[] = [
     }, {
         "text": "Направления",
         "value": 4
-    }, {
-        "text": "Направления",
-        "value": 4
     }
 ]

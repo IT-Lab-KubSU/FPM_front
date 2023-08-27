@@ -5,7 +5,7 @@ import {useState} from "react";
 import ContainerLayout from "@/layouts/ContainerLayout";
 
 
-export default function Directions({directions}: {directions: IDirectionDTO[]}) {
+export default function Directions({directions}: { directions: IDirectionDTO[] }) {
     const [dirButton, setButton] = useState(0);
     const [dirCard, setCard] = useState(0);
 
@@ -20,9 +20,13 @@ export default function Directions({directions}: {directions: IDirectionDTO[]}) 
 
         <div className="Disclosures">
             {directions[dirButton].directions.map((item, index) => <>
-                <DirCard text={item.text} index={index} subjects={item.subjects} image={item.image}
-                         title={item.title}
-                         cur={dirCard} set={setCard} key={index}/>
+                <DirCard
+                    card={item}
+                    index={index}
+                    cur={dirCard}
+                    set={setCard}
+                    key={index}
+                />
             </>)}
         </div>
     </ContainerLayout>)
