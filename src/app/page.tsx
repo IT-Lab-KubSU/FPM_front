@@ -18,7 +18,6 @@ import Feedback from "@/modules/Feedback/Feedback";
 import AboutUs from "@/modules/AboutUs/AboutUs";
 
 
-
 export default function Home() {
     return (
         <>
@@ -52,8 +51,8 @@ export default function Home() {
             {/*<Subtitle text={"Образовательные программы обучения"}/>*/}
             {/*<Subtitle text={"Образовательные программы обучения"}/>*/}
 
-            <Partners partners={partners}/>
             <Feedback/>
+            <Partners partners={partners}/>
             <Footer/>
         </>
     )

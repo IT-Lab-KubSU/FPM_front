@@ -1,13 +1,11 @@
 "use client";
 import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
-import {NewsControlBtn} from "@/modules/News/NewsControlBtn";
 import {NewCard} from "@/modules/News/NewCard";
 import Slider from "@/components/Slider/Slider";
 import ContainerLayout from "@/layouts/ContainerLayout";
 
 export default function News({news}: { news: INewDTO[] }) {
-    const NUM_OF_ELEMENTS = 3;
     const slider = useRef(null);
     const [currentNew, setNew] = useState(0);
 

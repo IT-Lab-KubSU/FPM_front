@@ -11,7 +11,7 @@ export default function Directions({directions}: { directions: IDirectionDTO[] }
 
 
     return (<ContainerLayout>
-        <div className="mb-8 DirButtons flex flex-nowrap gap-8">
+        <div className="mb-8 DirButtons flex flex-wrap gap-2 lg:gap-8">
             {directions.map((item, index) => <>
                 <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
                            set={setButton} key={index}/>

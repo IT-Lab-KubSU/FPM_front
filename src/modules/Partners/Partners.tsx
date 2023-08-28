@@ -6,18 +6,21 @@ import ContainerLayout from "@/layouts/ContainerLayout";
 
 const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO) => {
     return (
-        <div className={`partner-container ${addClassContainer}`}>
-            <div
-                className={`partner bg-zinc-50/40 px-6 backdrop-blur-sm drop-shadow-md py-4 rounded-[2rem] flex items-center ${addClassPartner}`}>
-                <div className="min-h-[40px] min-w-40 items-center flex">
-                    <Image src={image} alt={title} width={40} height={40} unoptimized={true}/>
+        <div className={`partner-container relative ${addClassContainer}`}>
+            <div className={"h-[50px]"}>
+                <div
+                    className={`partner bg-zinc-50/40 px-6 absolute left-[-100px] backdrop-blur-sm drop-shadow-md py-4 rounded-[2rem] flex items-center ${addClassPartner}`}>
+
+                    <div className="items-center flex w-[30px] h-[30px] md:w-[40px] md:h-[40px]">
+                        <Image src={image} alt={title} width={40} height={40} unoptimized={true}/>
+                    </div>
+                    <span className="ml-4 font-semibold text-sm lg:text-lg text-zinc-800">{title}</span>
                 </div>
-                <span className="ml-4 font-semibold text-zinc-800">{title}</span>
             </div>
         </div>)
 }
 
-export default function Partners({partners} :{partners: IPartnerDTO[]}) {
+export default function Partners({partners}: { partners: IPartnerDTO[] }) {
     useEffect(() => {
         document.querySelectorAll<HTMLElement>(".partner-container").forEach((el) => {
             const x = Math.floor(Math.random() * 40 - 20);
@@ -56,17 +59,19 @@ export default function Partners({partners} :{partners: IPartnerDTO[]}) {
         });
     }, [])
     return <ContainerLayout>
-        <div className="select-none relative max-w-[1240px] my-48">
-            <div className="flex justify-between mt-8 mb-2 lg:px-[5rem]">
+        <div className="select-none relative max-w-[1240px] my-48 mx-auto">
+            <div className="flex justify-between mt-8 mb-8 lg:px-[5rem] w-3/4 mx-auto">
                 {partners.slice(0, 4).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
             </div>
-            <Sphere addClass={"left-[40%] top-[-1rem]"} size={350} bgColor={"rgb(227,57,57)"} opacity={.2}/>
-            <h2 className="relative text-center text-7xl font-extrabold" style={{zIndex: 2}}>
+            <div className={"z-0 absolute w-full"}>
+                <Sphere addClass={"mx-auto"} size={350} bgColor={"rgb(57,57,200)"} opacity={.2}/>
+            </div>
+            <h2 className="relative text-center text-3xl md:text-5xl lg:text-7xl font-extrabold" style={{zIndex: 2}}>
                 Наши партнеры
             </h2>
-            <div className="flex justify-between mb-8 mt-2 lg:px-[5rem]">
+            <div className="flex justify-between mb-8 mt-8 lg:px-[5rem] w-3/4 mx-auto">
                 {partners.slice(4, 8).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index + 4}/></>
                 )}

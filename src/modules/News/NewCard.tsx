@@ -8,8 +8,8 @@ export const NewCard = ({card}: { card: INewDTO }) => {
         month: 'long',
         day: 'numeric',
     });
-    return <div className={`relative flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 w-[300px] h-full p-8 rounded-xl drop-shadow-md duration-700`}>
-        <div className="newCard mb-8">
+    return <div className={`relative flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 w-[300px] h-full p-6 rounded-xl drop-shadow-md duration-700`}>
+        <div className="newCard mb-12">
             <div className={'w-full h-[150px] flex justify-center items-center'}>
                 <Image src={card.image} alt={card.title} height={150} width={300} unoptimized={true}
                        className={`rounded-xl drop-shadow-md max-h-[150px]`}/>
@@ -18,7 +18,6 @@ export const NewCard = ({card}: { card: INewDTO }) => {
             <div className="line-clamp-4">
                 <b>{card.title}</b>
             </div>
-
         </div>
         <div className="bottom-4 text-zinc-800 absolute newCard">
             {formattedDate}

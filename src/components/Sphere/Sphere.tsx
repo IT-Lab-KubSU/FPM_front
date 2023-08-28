@@ -8,7 +8,7 @@ interface IProps {
 
 export default function Sphere({addClass, bgColor, pulse, size, opacity}: IProps) {
     return (<div
-        className={`z-0 absolute ${pulse ? "animate-pulse" : ""} blur-3xl rounded-3xl bg-red-800 ${addClass}`}
+        className={`${pulse ? "animate-pulse" : ""} blur-3xl rounded-3xl bg-red-800 ${addClass}`}
         style={{
             height: size,
             width: size,

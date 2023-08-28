@@ -1,7 +1,6 @@
 import Image from "next/image";
 import fpmLogo from "../../../public/fpm_logo.svg";
 import search from "../../../public/search.svg";
-import BlueButton from "@/components/BlueButton/BlueButton";
 import Link from "next/link";
 
 const NavLink = ({href, text, className}: { href: string, text: string, className?: string}) => {
