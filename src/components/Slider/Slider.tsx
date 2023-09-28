@@ -4,6 +4,7 @@ import {
     useEffect,
     useRef,
     useState,
+    ReactNode
 } from "react";
 import $ from "jquery";
 
@@ -19,7 +20,7 @@ function SliderButton({text, onClick}: { text: string, onClick: MouseEventHandle
                    className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white"}>{text}</button>
 }
 
-export default function Slider({children}: { children: React.ReactNode[] }) {
+export default function Slider({children}: { children: ReactNode[] }) {
     const length = children.length;
     const OFFSET = 50;
     const slider = useRef(null);
@@ -70,7 +71,7 @@ export default function Slider({children}: { children: React.ReactNode[] }) {
             return
         const sliderWidth = $(slider.current).outerWidth(true) as number;
         const outerWidth = $(slider.current).children(".slide").outerWidth(true) as number;
-        setNumOfElements(Math.floor(sliderWidth/outerWidth))
+        setNumOfElements(Math.floor(sliderWidth / outerWidth))
         const width = currentSlide * -outerWidth
         $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentSlide])
