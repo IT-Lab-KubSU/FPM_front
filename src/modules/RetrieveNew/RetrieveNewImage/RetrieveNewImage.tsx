@@ -6,7 +6,7 @@ interface INewDTOCard {
     image2: string,
     image3: string
 }
-export default function RetrieveNewImage({mas}: {mas: React.ReactNode[]}) {
+export default function RetrieveNewImage({mas}: {mas: string[]}) {
     const lengthCard = mas.length;
     const [currentSlideCard, setSlideCard] = useState(0);
     function nextSlideCard(step = 1) {
