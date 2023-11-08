@@ -1,5 +1,6 @@
 import TeacherCard from "@/modules/Teachers/TeacherCard";
 import Slider from "@/components/Slider/Slider";
+import {ITeacherDTO} from "@/dto";
 
 
 export default function Teachers({teachers}: { teachers: ITeacherDTO[] }) {

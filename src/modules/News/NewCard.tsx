@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {INewDTO} from "@/dto";
 
 export const NewCard = ({card}: { card: INewDTO }) => {
 

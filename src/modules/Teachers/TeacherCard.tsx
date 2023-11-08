@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {ITeacherDTO} from "@/dto";
 
 interface IProps {
     teacher: ITeacherDTO
