@@ -2,7 +2,7 @@ import AboutUsCard from "@/modules/AboutUs/AboutUsCard";
 
 export default function AboutUs() {
     return <div className="container my-8 px-12 mx-auto text-zinc-800">
-        <div className={"px-8 py-6 w-full text-xl grid grid-cols-2 gap-4"}>
+        <div className={"py-6 w-full text-xl grid grid-cols-2 gap-4"}>
             <AboutUsCard
                 title={"Добро пожаловать на факультет компьютерных технологий и прикладной математики!"}
                 text={"Здесь рождаются лидеры в мире программирования и инновационных технологий. Наша репутация говорит сама за себя: мы с гордостью подтверждаем, что наши выпускники - это кремниевая элита региона!"}

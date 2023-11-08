@@ -70,21 +70,22 @@ export default function Slider({children}: { children: React.ReactNode[] }) {
             return
         const sliderWidth = $(slider.current).outerWidth(true) as number;
         const outerWidth = $(slider.current).children(".slide").outerWidth(true) as number;
-        setNumOfElements(Math.floor(sliderWidth/outerWidth))
+        setNumOfElements(Math.floor(sliderWidth / outerWidth))
         const width = currentSlide * -outerWidth
         $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentSlide])
 
     return <>
         <div className={"container mx-auto h-full"}>
-
-            <div onWheel={scroll} onTouchStart={swipeStart} onTouchEnd={swipeEnd} className={"overflow-hidden"}>
-                <div ref={slider} className={"slider my-4 flex flex-nowrap duration-500 ease-in-out"}>
-                    {children.map((child) => <>
-                        <div className={"slide mx-2 delay-700"}>
-                            {child}
-                        </div>
-                    </>)}
+            <div className={"slider-box relative my-4"}>
+                <div onWheel={scroll} onTouchStart={swipeStart} onTouchEnd={swipeEnd} className={"overflow-hidden"}>
+                    <div ref={slider} className={"slider flex flex-nowrap duration-500 ease-in-out"}>
+                        {children.map((child, index) => <>
+                            <div className={"slide mx-2 delay-700"} key={index}>
+                                {child}
+                            </div>
+                        </>)}
+                    </div>
                 </div>
             </div>
             <div className={"flex flex-row flex-nowrap items-center justify-center gap-2 px-4"}>
@@ -92,8 +93,8 @@ export default function Slider({children}: { children: React.ReactNode[] }) {
                     setSlide(Math.min(index, length - numOfElements))
                 }} active={currentSlide <= index && index < currentSlide + numOfElements} key={index}/></>)}
                 <div className={"flex gap-2 px-2"}>
-                    <SliderButton text={"<"} onClick={() => prevSlide(numOfElements)}/>
-                    <SliderButton text={">"} onClick={() => nextSlide(numOfElements)}/>
+                    <SliderButton key={"0"} text={"<"} onClick={() => prevSlide(numOfElements)}/>
+                    <SliderButton key={"1"} text={">"} onClick={() => nextSlide(numOfElements)}/>
                 </div>
             </div>
         </div>

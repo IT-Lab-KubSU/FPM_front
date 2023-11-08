@@ -1,4 +1,67 @@
-export const news: INewDTO[] = [
+import dirImg from "../../public/diractions.svg";
+import {IDirectionDTO, INewDTO, IPartnerDTO, IStatsDTO} from "@/dto";
+
+const directions: IDirectionDTO[] = [
+    {
+        buttonText: "Бакалавриат",
+        directions: [
+            {
+                title: "Прикладная математика и информатика",
+                code: "01.03.02",
+                forms: ["Очная"],
+                subjects: ["Математика", "Информатика и ИКТ", "Русский язык"],
+                text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                image: dirImg,
+            }, {
+                title: "Математическое обеспечение и системное администрирование",
+                code: "02.03.03",
+                forms: ["Очная"],
+                subjects: ["Математика", "Информатика и ИКТ", "Русский язык"],
+                text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                image: dirImg,
+            }, {
+                title: "Фундаментальная информатика и информационные технологии",
+                code: "02.03.02",
+                forms: ["Очная"],
+                subjects: ["Математика", "Информатика и ИКТ", "Русский язык"],
+                text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                image: dirImg,
+            }, {
+                title: "Прикладная информатика",
+                code: "09.03.03",
+                forms: ["Очная"],
+                subjects: ["Математика", "Информатика и ИКТ", "Русский язык"],
+                text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+                image: dirImg,
+            },
+        ]
+    }, {
+        buttonText: "Магистратура",
+        directions: [{
+            title: "Прикладная математика и информатика",
+            code: "01.04.02",
+            forms: ["Очная"],
+            subjects: [],
+            text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+            image: dirImg,
+        }, {
+            title: "Фундаментальная информатика и информационные технологии",
+            code: "02.04.02",
+            forms: ["Очная", "Очно-заочная"],
+            subjects: [],
+            text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+            image: dirImg,
+        }, {
+            title: "Информационные системы и технологии",
+            code: "09.04.02",
+            forms: ["Очная", "Очно-заочная"],
+            subjects: [],
+            text: "Специальность, позволяющая составлять компьютерные программы, та в целом быть умным)",
+            image: dirImg,
+        }]
+    }
+]
+const news: INewDTO[] = [
     {
         title: "Открытие Нового Учебного Года в КубГУ",
         text: "Сегодня в Университете КубГУ состоялось официальное открытие нового учебного года. Ректор приветствовал студентов и пожелал успешной учебы.",
@@ -59,5 +122,54 @@ export const news: INewDTO[] = [
         image: "https://www.kubsu.ru/sites/default/files/styles/news_large/public/news/img_9366_2.jpg?itok=bTiCR-6V",
         date: 1680604800000,
     },
-    // Добавьте другие новости об образовании в университете "КубГУ" по аналогии
 ];
+
+const partners: IPartnerDTO[] = [
+    {
+        title: "ТИНЬКОФФ",
+        image: "https://acdn.tinkoff.ru/static/documents/d6400f9d-63bb-4076-b887-7aa967baf8a9.svg"
+    }, {
+        title: "ПРОДОКТОРОВ",
+        image: "https://prodoctorov.ru/static/img/PD_big2.png"
+    }, {
+        title: "ГАЗПРОМ",
+        image: "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+    }, {
+        title: "РОСНЕФТЬ",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Rosneft_201x_logo.svg/2560px-Rosneft_201x_logo.svg.png"
+    }, {
+        title: "ГАЗПРОМ",
+        image: "https://companieslogo.com/img/orig/GAZP.ME-56a2073a.png?t=1593293052"
+    }, {
+        title: "МТС",
+        image: "https://moskva.mts.ru/upload/images/logo/new/mts_logo_cmyk.png"
+    }, {
+        title: "Сбербанк",
+        image: "https://free-png.ru/wp-content/uploads/2020/09/icon_sber-01.png"
+    }, {
+        title: "Тандер",
+        image: "https://tmsearch.onlinepatent.ru/images/94f/94f6321a-b1f9-48a5-9817-2a76ef40151f.jpg"
+    }
+];
+const stats: IStatsDTO[] = [
+    {
+        "text": "Направления",
+        "value": 4
+    }, {
+        "text": "Студентов",
+        "value": 1200
+    }, {
+        "text": "Партнеров",
+        "value": 25
+    }, {
+        "text": "Средняя ЗП",
+        "value": 80000
+    }
+];
+
+export const CONSTANTS = {
+    directions,
+    news,
+    partners,
+    stats
+}

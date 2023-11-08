@@ -2,162 +2,132 @@
 import BlueButton from "@/components/BlueButton/BlueButton";
 import Link from "next/link";
 import './Feedback.css'
-import {Dispatch, SetStateAction, useRef, useState} from "react";
-import {Modal, ModalHandle} from "@/components/Modal/Modal";
+import {Dispatch, SetStateAction, useMemo, useRef, useState} from "react";
+import {
+    Checkbox,
+    Input,
+    Modal, ModalBody,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    useDisclosure
+} from "@nextui-org/react";
+import {Button} from "@nextui-org/button";
+import Image from "next/image";
 
-const validatePhone = (phone: string, setF: Dispatch<SetStateAction<string>>) => {
-    let start = ""
-
-    if (phone.startsWith("+"))
-        start = "+"
-
-    phone = phone.replace(/\D/g, '')
-    if (phone.length > 13)
-        return
-    phone = phone.replace(/(\d{1,3})(\d{3})(\d{3})(\d{4})$/g, function (a, b, c, d, e) {
-        let ret = "";
-        if (b != "")
-            ret = b;
-        if (c != "")
-            ret = ret + "(" + c;
-        if (d != "")
-            ret = ret + ")" + d;
-        if (e != "")
-            ret = ret + "-" + e;
-        return ret;
-    })
-    setF(start + phone)
-}
 export default function Feedback() {
-    const [disabledCheckbox, setDisabled] = useState(false)
-    const [phoneValue, setPhoneValue] = useState('')
-    const [phoneError, setPhoneError] = useState(false)
-    const [nameError, setNameError] = useState(false)
-    const [emailError, setEmailError] = useState(false)
-    const modalRef = useRef<ModalHandle | null>(null);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const [checkboxValue, setCheckboxValue] = useState(true)
+    const [nameValue, setNameValue] = useState<string>()
+    const [phoneValue, setPhoneValue] = useState<string>()
+    const [emailValue, setEmailValue] = useState<string>()
 
-    const openModal = () => {
-        modalRef.current?.setVisible();
-    };
+    const validateEmail = (value: string) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+    const validatePhone = (value: string) => value.match(/^[+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/i);
+
+    const isCheckboxInvalid = useMemo(() => {
+        return !checkboxValue
+    }, [checkboxValue]);
+
+    const isEmailInvalid = useMemo(() => {
+        if (emailValue === undefined) return false;
+        if (emailValue === "") return true;
+
+        return !validateEmail(emailValue);
+    }, [emailValue]);
+
+    const isPhoneInvalid = useMemo(() => {
+        if (phoneValue === undefined) return false;
+        if (phoneValue === "") return true;
+
+        return !validatePhone(phoneValue);
+    }, [phoneValue]);
+
+    const isNameInvalid = useMemo(() => {
+        if (nameValue === undefined) return false;
+        return nameValue === "";
+    }, [nameValue]);
+
+
+    const isDisabled = useMemo(() => {
+        return !nameValue || !emailValue || !phoneValue ||
+            isNameInvalid || isPhoneInvalid || isEmailInvalid || isCheckboxInvalid
+
+    }, [isEmailInvalid, isPhoneInvalid, isNameInvalid, isCheckboxInvalid, nameValue, emailValue, phoneValue]);
 
     const sendApplication = () => {
-        const phone = document.querySelector<HTMLInputElement>('#phone')
-        const name = document.querySelector<HTMLInputElement>('#name')
-        const email = document.querySelector<HTMLInputElement>('#email')
-
-        if (!(phone && name && email) || disabledCheckbox)
+        if (isDisabled)
             return
 
-        const emailRegexp = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
-        const phoneRegexp = new RegExp('^[\\+]?[0-9]{1,2}[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$')
+        const data = {
+            phone: phoneValue,
+            email: emailValue,
+            name: nameValue
+        }
 
-        let error = false;
-
-        if (!phoneRegexp.test(phone.value)) {
-            error = true
-            setPhoneError(true)
-        } else
-            setPhoneError(false)
-
-        if (!emailRegexp.test(email.value)) {
-            error = true
-            setEmailError(true)
-        } else
-            setEmailError(false)
-
-        if (!name.value) {
-            error = true
-            setNameError(true)
-        } else
-            setNameError(false)
-
-        if (error) return
-        console.log("Send application")
-        openModal()
+        console.log(data)
+        onOpen()
     }
-
 
     return <>
         <div id={"feedback"} className={"container my-12 mt-24 px-12 mx-auto"}>
-            <div className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
+            <div
+                className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
                 <div className={"p-12"}>
                     <div className={"mb-12"}>
                     <span className={"font-bold text-3xl text-zinc-900"}>
-                        Оставить заявку на поступление
+                        Оставить заявку
                     </span>
                     </div>
                     <div className={"grid grid-cols-1 gap-4 my-4"}>
-                        <input
-                            className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${nameError ? "border-2 border-red-400 placeholder-red-600 text-red-600" : ""}`}
-                            onInput={
-                                (el) => {
-                                    setPhoneError(false)
-                                }
-                            }
-                            id={"name"}
+                        <Input
+                            value={nameValue}
                             type={"text"}
+                            label={"Имя"}
                             name={"name"}
-                            placeholder={"Имя"}
+                            color={isNameInvalid ? "danger" : "default"}
+                            errorMessage={isNameInvalid && "Введите свое имя"}
+                            onValueChange={setNameValue}
+                            isInvalid={isNameInvalid}
                             required={true}/>
-                        <input
-                            className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${phoneError ? "border-2 border-red-400 placeholder-red-600 text-red-600" : ""}`}
-                            id={"phone"}
-                            onInput={
-                                (el) => {
-                                    validatePhone(el.currentTarget.value, setPhoneValue)
-                                    setPhoneError(false)
-                                }
-                            }
-                            onSelect={
-                                (el) => {
-                                    const input = el.currentTarget as HTMLElement
-                                    input.setAttribute("placeholder", "+_(___)___-____")
-                                }
-                            }
-                            onBlur={
-                                (el) => {
-                                    const input = el.currentTarget as HTMLElement
-                                    input.setAttribute("placeholder", "Номер телефона")
-                                }
-                            }
+                        <Input
                             value={phoneValue}
-                            type={"tel"}
+                            type={"phone"}
+                            label={"Номер телефона"}
                             name={"phone"}
-                            placeholder={"Номер телефона"}
-                            pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"}
+                            color={isPhoneInvalid ? "danger" : "default"}
+                            errorMessage={isPhoneInvalid && "Введите правильный номер телефона"}
+                            onValueChange={setPhoneValue}
+                            isInvalid={isPhoneInvalid}
                             required={true}/>
-                        <input
-                            className={`rounded-lg drop-shadow-md py-4 px-6 w-full ${emailError ? "border-2 border-red-400 placeholder-red-600 text-red-600" : ""}`}
-                            onInput={(el) => {
-                                setPhoneError(false)
-                            }}
-                            id={"email"}
-                            type={"text"}
+                        <Input
+                            value={emailValue}
+                            type={"email"}
+                            label={"Почта"}
                             name={"email"}
-                            placeholder={"Почта"}
+                            color={isEmailInvalid ? "danger" : "default"}
+                            errorMessage={isEmailInvalid && "Введите правильный email адрес"}
+                            onValueChange={setEmailValue}
+                            isInvalid={isEmailInvalid}
                             required={true}/>
-                        <BlueButton disabled={disabledCheckbox}
+                        <BlueButton disabled={isDisabled}
                                     className={"py-4 px-6 w-full rounded-lg"}
                                     onClick={sendApplication}
                                     text={"Подать заявку"}
                         />
                     </div>
-
-                    <input onChange={
-                        () => setDisabled((prevState) => !prevState)
-                    }
-                           type="checkbox"
-                           className="custom-checkbox"
-                           name="policy"
-                           id="policy"
-                           checked={!disabledCheckbox}
-                           required={true}/>
-                    <label htmlFor="policy">
-                    <span className={"ml-2 text-zinc-900 md:text-md text-sm"}>
+                    <Checkbox
+                        isSelected={checkboxValue}
+                        onValueChange={setCheckboxValue}
+                        defaultSelected
+                        size="md"
+                        required={true}
+                    >
+                        <span className={"ml-2 text-zinc-900 md:text-md text-sm"}>
                         Я даю согласие на обработку персональных данных, согласен на получение информационных рассылок от КубГУ и соглашаюсь c
                         <Link href="" className={"font-bold"}> политикой конфиденциальности</Link>.
                     </span>
-                    </label>
+                    </Checkbox>
                 </div>
                 <div>
                     <div className={"w-full h-full min-h-[400px]"} style={{position: "relative", overflow: "hidden"}}><a
@@ -176,6 +146,22 @@ export default function Feedback() {
                 </div>
             </div>
         </div>
-        <Modal ref={modalRef}/>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+                {(onClose) => (
+                    <>
+                        <ModalHeader className="flex flex-col gap-1">Заявку отправлена успешно!</ModalHeader>
+                        <ModalBody>
+                            Спасибо!
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onPress={onClose}>
+                                Закрыть
+                            </Button>
+                        </ModalFooter>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>
     </>
 }

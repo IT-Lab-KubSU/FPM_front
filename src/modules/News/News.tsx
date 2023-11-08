@@ -4,6 +4,7 @@ import $ from "jquery";
 import {NewCard} from "@/modules/News/NewCard";
 import Slider from "@/components/Slider/Slider";
 import ContainerLayout from "@/layouts/ContainerLayout";
+import {INewDTO} from "@/dto";
 
 export default function News({news}: { news: INewDTO[] }) {
     const slider = useRef(null);
@@ -17,11 +18,13 @@ export default function News({news}: { news: INewDTO[] }) {
         $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentNew])
 
-    return <ContainerLayout>
-        <Slider>
-            {news.map((item, index) => <>
-                <NewCard card={item} key={index}/>
-            </>)}
-        </Slider>
-    </ContainerLayout>
+    return <>
+        <ContainerLayout>
+            <Slider>
+                {news.map((item) => <>
+                    <NewCard card={item} key={item.title}/>
+                </>)}
+            </Slider>
+        </ContainerLayout>
+    </>
 }

@@ -1,33 +1,44 @@
 "use client";
-import DirButton from "@/modules/Directions/DirButton";
 import DirCard from "@/modules/Directions/DirCard";
-import {useState} from "react";
 import ContainerLayout from "@/layouts/ContainerLayout";
+import {Accordion, AccordionItem, Tab, Tabs} from "@nextui-org/react";
+import {IDirectionDTO} from "@/dto";
 
 
 export default function Directions({directions}: { directions: IDirectionDTO[] }) {
-    const [dirButton, setButton] = useState(0);
-    const [dirCard, setCard] = useState(0);
-
-
     return (<ContainerLayout>
-        <div className="mb-8 DirButtons flex flex-wrap gap-2 lg:gap-8">
-            {directions.map((item, index) => <>
-                <DirButton text={item.buttonText} index={index} cur={dirButton} cardSet={setCard}
-                           set={setButton} key={index}/>
-            </>)}
-        </div>
-
-        <div className="Disclosures">
-            {directions[dirButton].directions.map((item, index) => <>
-                <DirCard
-                    card={item}
-                    index={index}
-                    cur={dirCard}
-                    set={setCard}
-                    key={index}
-                />
-            </>)}
-        </div>
+        <Tabs size={"lg"}
+              className={"pb-4 font-semibold"}
+              color={"primary"}
+              variant={"light"}
+              aria-label={"Направления"}
+              radius={"lg"}
+        >
+            {directions.map(({buttonText}, index) => <Tab key={index} title={buttonText}>
+                <Accordion variant="splitted" className={"px-0"}>
+                    {directions[index].directions.map((item, index) =>
+                            <AccordionItem
+                                startContent={<div
+                                    className="text-[#3364E2] text-2xl font-semibold col-span-1 hidden md:block">
+                                    {`0${index + 1}`}
+                                </div>}
+                                key={index}
+                                indicator={<div className={"text-md lg:text-xl font-light"}>
+                                    {item.code}
+                                </div>}
+                                disableIndicatorAnimation={true}
+                                title={<span className={"text-xl text-zinc-800"}>
+                        {item.title}
+                    </span>}
+                                aria-label={item.title}>
+                                <DirCard
+                                    card={item}
+                                    key={index}
+                                />
+                            </AccordionItem>
+                    )}
+                </Accordion>
+            </Tab>)}
+        </Tabs>
     </ContainerLayout>)
 }

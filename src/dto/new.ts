@@ -1,4 +1,4 @@
-interface INewDTO {
+export interface INewDTO {
     title: string,
     text: string,
     image: string,

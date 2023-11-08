@@ -1,4 +1,4 @@
-interface IPartnerDTO {
+export interface IPartnerDTO {
     title: string
     image: string
     addClassContainer?: string

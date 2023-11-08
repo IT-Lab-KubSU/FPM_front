@@ -3,19 +3,15 @@ import Image from "next/image";
 import {useEffect} from "react";
 import Sphere from "@/components/Sphere/Sphere";
 import ContainerLayout from "@/layouts/ContainerLayout";
+import {IPartnerDTO} from "@/dto";
 
 const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO) => {
     return (
-        <div className={`partner-container relative ${addClassContainer}`}>
-            <div className={"h-[50px]"}>
-                <div
-                    className={`partner bg-zinc-50/40 px-6 absolute left-[-100px] backdrop-blur-sm drop-shadow-md py-4 rounded-[2rem] flex items-center ${addClassPartner}`}>
-
-                    <div className="items-center flex w-[30px] h-[30px] md:w-[40px] md:h-[40px]">
-                        <Image src={image} alt={title} width={40} height={40} unoptimized={true}/>
-                    </div>
-                    <span className="ml-4 font-semibold text-sm lg:text-lg text-zinc-800">{title}</span>
-                </div>
+        <div className={`partner-container ${addClassContainer}`}>
+            <div
+                className={`partner h-full bg-zinc-50/40 backdrop-blur-sm drop-shadow-md p-4 rounded-3xl flex items-center gap-1.5 ${addClassPartner}`}>
+                <Image src={image} alt={title} width={35} height={35} unoptimized={true}/>
+                <span className="font-medium text-sm text-zinc-800">{title}</span>
             </div>
         </div>)
 }
@@ -59,8 +55,8 @@ export default function Partners({partners}: { partners: IPartnerDTO[] }) {
         });
     }, [])
     return <ContainerLayout>
-        <div className="select-none relative max-w-[1240px] my-48 mx-auto">
-            <div className="flex justify-between mt-8 mb-8 lg:px-[5rem] w-3/4 mx-auto">
+        <div className="select-none relative my-48 mx-auto">
+            <div className="flex justify-around gap-2">
                 {partners.slice(0, 4).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index}/></>
                 )}
@@ -68,10 +64,10 @@ export default function Partners({partners}: { partners: IPartnerDTO[] }) {
             <div className={"z-0 absolute w-full"}>
                 <Sphere addClass={"mx-auto"} size={350} bgColor={"rgb(57,57,200)"} opacity={.2}/>
             </div>
-            <h2 className="relative text-center text-3xl md:text-5xl lg:text-7xl font-extrabold" style={{zIndex: 2}}>
+            <h2 className="relative text-center text-4xl md:text5xl lg:text-6xl font-extrabold my-8" style={{zIndex: 2}}>
                 Наши партнеры
             </h2>
-            <div className="flex justify-between mb-8 mt-8 lg:px-[5rem] w-3/4 mx-auto">
+            <div className="flex justify-around gap-2">
                 {partners.slice(4, 8).map((item, index) =>
                     <><Partner title={item.title} image={item.image} key={index + 4}/></>
                 )}

@@ -1,11 +1,11 @@
-interface IDirectionDTO {
+export interface IDirectionDTO {
     buttonText: string,
     directions: IDirection[]
 }
 
-interface IDirection {
+export interface IDirection {
     title: string,
-    subjects: string,
+    subjects: string[],
     text: string,
     forms: string[],
     code: string,

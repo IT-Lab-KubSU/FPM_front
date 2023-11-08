@@ -1,4 +1,4 @@
-interface ITeacherDTO {
+export interface ITeacherDTO {
     id: string,
     slug: string,
     name: string,

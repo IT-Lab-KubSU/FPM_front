@@ -22,7 +22,7 @@ export default function SnakeText({text, mainText}: IProps) {
         document.addEventListener("scroll", (event) => {animateStartOffset()});
     }, [])
     return (<>
-        <svg className="snake" viewBox="0 0 1920 509" fill="none" xmlns="http://www.w3.org/2000/svg" style={{
+        <svg className={"snake"} viewBox="0 0 1920 509" fill="none" xmlns="http://www.w3.org/2000/svg" style={{
             transition: "startOffset 10s ease-in-out",
             margin: "0!important"
         }}>
@@ -31,10 +31,10 @@ export default function SnakeText({text, mainText}: IProps) {
             </path>
             <text y="40" letterSpacing="-0.02em" fill="#2B2D33"
                   fontFamily="ES Build, Matter, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;"
-                  fontSize="124">
+                  fontSize="80">
                 <textPath ref={snake} href="#text-curve" fontWeight="900" startOffset={0} opacity={0} style={{transition: ".8s ease-in-out"}}>
                     <tspan fill="#498CE9">{mainText}</tspan>
-                    {text}
+                    <tspan style={{fill: "rgb(var(--foreground-rgb))"}}>{text}</tspan>
                 </textPath>
             </text>
         </svg>

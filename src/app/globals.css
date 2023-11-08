@@ -4,28 +4,38 @@
 
 :root {
     --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    --background-rgb: 230, 230, 230;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 30, 30, 30;
-        --background-end-rgb: 0, 0, 0;
+        --background-rgb: 40, 40, 40;
     }
 }
 
 html {
-    --scroll-behavior: smooth!important;
-    scroll-behavior: smooth!important;
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
 }
 
 body {
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-    ) rgb(var(--background-start-rgb));
+    background: rgb(var(--background-rgb))
 }
+
+.slider-box::after {
+    content: '';
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 60px;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    z-index: 9999999;
+    margin-left: auto;
+    top: 0;
+    background: linear-gradient(to right, rgba(var(--background-rgb), 0) 0, rgba(var(--background-rgb), 1) 100%);
+}
+
