@@ -76,7 +76,7 @@ export default function Feedback() {
                 className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
                 <div className={"p-12"}>
                     <div className={"mb-12"}>
-                    <span className={"font-bold text-3xl text-zinc-900"}>
+                    <span className={"font-bold text-2xl lg:text-3xl text-zinc-900"}>
                         Оставить заявку
                     </span>
                     </div>
@@ -124,7 +124,7 @@ export default function Feedback() {
                         size="md"
                         required={true}
                     >
-                        <span className={"ml-2 text-zinc-900 md:text-md text-sm"}>
+                        <span className={"ml-2 text-zinc-900 md:text-md sm:text-sm text-xs"}>
                         Я даю согласие на обработку персональных данных, согласен на получение информационных рассылок от КубГУ и соглашаюсь c
                         <Link href="" className={"font-bold"}> политикой конфиденциальности</Link>.
                     </span>
