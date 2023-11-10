@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 import {Button} from "@nextui-org/button";
 import Image from "next/image";
+import ContainerLayout from "@/layouts/ContainerLayout";
 
 export default function Feedback() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -69,8 +70,8 @@ export default function Feedback() {
         onOpen()
     }
 
-    return <>
-        <div id={"feedback"} className={"container my-12 mt-24 px-12 mx-auto"}>
+    return <ContainerLayout>
+        <div id={"feedback"} className={"mt-24"}>
             <div
                 className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
                 <div className={"p-12"}>
@@ -163,5 +164,5 @@ export default function Feedback() {
                 )}
             </ModalContent>
         </Modal>
-    </>
+    </ContainerLayout>
 }

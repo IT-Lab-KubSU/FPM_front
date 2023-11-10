@@ -1,8 +1,9 @@
 import AboutUsCard from "@/modules/AboutUs/AboutUsCard";
+import ContainerLayout from "@/layouts/ContainerLayout";
 
 export default function AboutUs() {
-    return <div className="container my-8 px-12 mx-auto text-zinc-800">
-        <div className={"py-6 w-full text-xl grid grid-cols-2 gap-4"}>
+    return <ContainerLayout>
+        <div className={"text-zinc-800 py-6 w-full text-xl grid grid-cols-1 gap-4 lg:grid-cols-2"}>
             <AboutUsCard
                 title={"Добро пожаловать на факультет компьютерных технологий и прикладной математики!"}
                 text={"Здесь рождаются лидеры в мире программирования и инновационных технологий. Наша репутация говорит сама за себя: мы с гордостью подтверждаем, что наши выпускники - это кремниевая элита региона!"}
@@ -28,5 +29,5 @@ export default function AboutUs() {
                 text={"Если вы мечтаете о карьере в ведущих компаниях, важных организациях и инновационных стартапах, то факультет компьютерных технологий и прикладной математики - ваше идеальное место. Присоединяйтесь к нам, и вы станете частью команды, которая формирует будущее уже сегодня."}
             />
         </div>
-    </div>
+    </ContainerLayout>
 }

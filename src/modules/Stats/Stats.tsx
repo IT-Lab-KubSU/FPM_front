@@ -1,4 +1,5 @@
 import {IStatsDTO} from "@/dto";
+import ContainerLayout from "@/layouts/ContainerLayout";
 
 const Stat = ({text, value}: IStatsDTO) => {
     return (<div className="flex flex-col justify-between self-stretch items-center">
@@ -9,15 +10,15 @@ const Stat = ({text, value}: IStatsDTO) => {
 
 export default function Stats({stats}: { stats: IStatsDTO[] }) {
     return <>
-        <div className={"py-10"}>
-            <div className="container mx-auto px-12 drop-shadow-md">
+        <ContainerLayout>
+            <div className="drop-shadow-md">
                 <div key={"1"}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-28 bg-gradient-to-b px-[100px] py-[45px] from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
+                    className="grid grid-cols-1 lg:grid-cols-4 gap-28 bg-gradient-to-b px-[100px] py-[45px] from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
                     {stats.slice(0, 4).map(
                         (item, index) => <Stat text={item.text} value={item.value} key={index}/>
                     )}
                 </div>
             </div>
-        </div>
+        </ContainerLayout>
     </>
 }

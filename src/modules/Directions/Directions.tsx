@@ -27,7 +27,7 @@ export default function Directions({directions}: { directions: IDirectionDTO[] }
                                     {item.code}
                                 </div>}
                                 disableIndicatorAnimation={true}
-                                title={<span className={"text-xl text-zinc-800"}>
+                                title={<span className={"text-md md:text-lg break-all lg:text-xl text-zinc-800"}>
                         {item.title}
                     </span>}
                                 aria-label={item.title}>

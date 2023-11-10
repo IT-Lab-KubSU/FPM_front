@@ -7,7 +7,7 @@ export default function Intro() {
     return (<>
         <ContainerLayout>
             <p className="text-2xl font-extralight tracking-[.25em]">КУБГУ</p>
-            <h1 className="text-5xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl">
                 Факультет<br/>
                 компьютерных технологий<br/>
                 и<br/>
@@ -19,14 +19,14 @@ export default function Intro() {
                 в профессии и осваивать новые специальности
             </p>
             <div className="my-16 h-200px flex">
-                <BlueButton href={"#feedback"} text={"КОНТАКТЫ"} className={"text-2xl font-medium px-12 py-4"}/>
-                <div className="z-0 w-[60%] h-[2rem] bg-gradient-to-r from-[#5C83E7]"></div>
+                <BlueButton href={"#feedback"} text={"КОНТАКТЫ"} className={"text-lg lg:text-2xl font-medium px-12 py-4"}/>
+                <div className="hidden md:block z-0 w-[60%] h-[2rem] bg-gradient-to-r from-[#5C83E7]"></div>
             </div>
         </ContainerLayout>
 
 
-        <div className="rPattern absolute right-0 top-24 z-0 opacity-70 dark:invert">
-            <svg width="350" height="100%" viewBox="0 0 673 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="rPattern absolute right-0 top-24 z-0 opacity-70 dark:invert w-1/3">
+            <svg height="100%" viewBox="0 0 673 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M77.4277 713.602C34.6591 713.602 -2.89858e-05 678.943 -2.89858e-05 636.174C-2.89858e-05 593.406 34.6591 558.747 77.4277 558.747C111.242 558.747 139.891 580.445 150.463 610.639H672.666V661.71H150.463C139.891 691.904 111.242 713.602 77.4277 713.602ZM77.4277 610.373C63.1876 610.373 51.6265 621.934 51.6265 636.174C51.6265 650.414 63.1876 661.975 77.4277 661.975C91.6679 661.975 103.229 650.414 103.229 636.174C103.229 621.934 91.6679 610.373 77.4277 610.373Z"
                     fill="black" className="svg-elem-1"></path>
