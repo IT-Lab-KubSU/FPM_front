@@ -1,6 +1,6 @@
 "use client"
 import {
-    MouseEventHandler,
+    MouseEventHandler, ReactNode,
     useEffect,
     useRef,
     useState,
@@ -19,7 +19,7 @@ function SliderButton({text, onClick, className}: { text: string, onClick: Mouse
                    className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white " + className}>{text}</button>
 }
 
-export default function Slider({children}: { children: React.ReactNode[] }) {
+export default function Slider({children}: { children: ReactNode[] }) {
     const length = children.length;
     // const OFFSET = 50;
     const slider = useRef(null);
