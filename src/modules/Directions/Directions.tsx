@@ -19,7 +19,7 @@ export default function Directions({directions}: { directions: IDirectionDTO[] }
                     {directions[index].directions.map((item, index) =>
                             <AccordionItem
                                 startContent={<div
-                                    className="text-[#3364E2] text-2xl font-semibold col-span-1 hidden md:block">
+                                    className="text-[#3364E2] text-2xl font-semibold col-span-1">
                                     {`0${index + 1}`}
                                 </div>}
                                 key={index}

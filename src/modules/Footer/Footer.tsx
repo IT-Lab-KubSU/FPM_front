@@ -86,9 +86,12 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className={"text-2xl"}>
-                        <div className={"hover:text-[#5C83E7] duration-500 py-3"}><a href="">+7 (861) 219-95-78</a>
+                        <div className={"hover:text-[#5C83E7] duration-500 py-3"}>
+                            <a href="tel:+79612199578">+7 (861) 219-95-78</a>
                         </div>
-                        <div className={"hover:text-[#5C83E7] duration-500"}><a href="">+7 (918) 684-03-33</a></div>
+                        <div className={"hover:text-[#5C83E7] duration-500"}>
+                            <a href="tel:+79186840333">+7 (918) 684-03-33</a>
+                        </div>
                         <div className={"py-4 grid grid-cols-4"}>
                             <div>
                                 <FooterLink href="https://vk.com/fktipm_kubsu">

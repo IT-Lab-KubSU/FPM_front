@@ -10,6 +10,7 @@ import SnakeText from "@/components/SnakeText/SnakeText";
 import {CONSTANTS} from "@/app/constants";
 import Feedback from "@/modules/Feedback/Feedback";
 import AboutUs from "@/modules/AboutUs/AboutUs";
+import {Menu} from "@/components/Menu/Menu";
 
 
 export default function Home() {
