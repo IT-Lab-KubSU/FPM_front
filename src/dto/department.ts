@@ -1,14 +1,12 @@
-export interface IDepartmentsDTO{
-    [key: string]: IDepartmentsDT[];
-}
-export interface IDepartmentsDT{
+export interface IDepartmentDTO{
+    slug: string,
     title: string,
     text: string,
     image: string[],
     advantages: string[],
-    task: IDepartments[]
+    task: ITask[]
 }
-export interface IDepartments{
+export interface ITask{
     name: string,
     description: string
 }
