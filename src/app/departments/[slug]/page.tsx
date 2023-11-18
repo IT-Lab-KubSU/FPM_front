@@ -1,6 +1,5 @@
-import Header from "@/modules/Header/Header";
-import Footer from "@/modules/Footer/Footer";
-import {Department} from "@/modules/Departments/Departments";
+import {Footer, Header} from "@/widgets";
+import {Department} from "@/entities";
 import {CONSTANTS} from "@/app/constants";
 import {redirect} from "next/navigation";
 
