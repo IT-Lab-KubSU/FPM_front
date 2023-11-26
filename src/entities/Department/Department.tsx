@@ -1,5 +1,13 @@
-import {IDepartmentDTO} from "@/dto";
 import {ContainerLayout} from "@/entities";
+
+interface IDepartmentDTO {
+    title: string
+    code: string
+    forms: string[]
+    subjects: string[]
+    text: string
+    image: string,
+}
 
 export const Department = ({department}: { department: IDepartmentDTO}) => {
     return <ContainerLayout>
