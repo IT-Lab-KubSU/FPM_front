@@ -25,7 +25,7 @@ export default function SnakeText({text, mainText}: IProps) {
             animateStartOffset()
         });
     }, [])
-    return <svg className={"snake hidden md:block"} viewBox="0 60 1920 459" fill="none"
+    return <svg className={"snake hidden md:block select-none"} viewBox="0 60 1920 459" fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{
                     transition: "startOffset 10s ease-in-out",

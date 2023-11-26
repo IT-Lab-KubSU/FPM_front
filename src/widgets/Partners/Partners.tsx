@@ -17,7 +17,7 @@ const Partner = ({title, image}: IPartnerDTO) => {
 }
 
 export const Partners = ({partners}: { partners: IPartnerDTO[] }) => {
-    return <Marquee autoFill={true}>
+    return <Marquee autoFill={true} speed={40}>
         {partners.map((item, index) =>
             <Partner title={item.title} image={item.image} key={index}/>
         )}
