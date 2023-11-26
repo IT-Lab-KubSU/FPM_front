@@ -5,7 +5,7 @@ import {LeedForm} from "@/features";
 export const LeedFormWithMap = () => {
 
     return <ContainerLayout>
-        <div className={"mt-24"}>
+        <div>
             <div className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
                 <div className={"p-12"}>
                     <div className={"mb-12"}>
