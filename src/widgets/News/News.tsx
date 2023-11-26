@@ -1,10 +1,9 @@
 "use client";
 import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
-import {NewCard} from "./NewCard";
+import {NewCard, INewDTO} from "./NewCard";
 import {Slider} from "@/features";
-import ContainerLayout from "@/entities/layouts/ContainerLayout";
-import {INewDTO} from "@/dto";
+import {ContainerLayout} from "@/entities/layouts/ContainerLayout";
 
 export const News = ({news}: { news: INewDTO[] }) => {
     const slider = useRef(null);
@@ -21,9 +20,7 @@ export const News = ({news}: { news: INewDTO[] }) => {
     return <>
         <ContainerLayout>
             <Slider>
-                {news.map((item) => <>
-                    <NewCard card={item} key={item.title}/>
-                </>)}
+                {news.map((item, index) => <NewCard card={item} key={index}/>)}
             </Slider>
         </ContainerLayout>
     </>

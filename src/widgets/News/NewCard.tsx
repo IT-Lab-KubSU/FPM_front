@@ -1,11 +1,19 @@
 import Image from "next/image";
-import {INewDTO} from "@/dto";
 import {stringifyDate} from "@/shared";
+
+export interface INewDTO {
+    title: string,
+    text: string,
+    image: string,
+    date: number,
+}
 
 export const NewCard = ({card}: { card: INewDTO }) => {
     const formattedDate = stringifyDate(card.date);
 
-    return <div className={`relative flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 w-[300px] h-full p-6 rounded-xl drop-shadow-md duration-700`}>
+    return <div
+        className={`relative flex flex-col justify-between bg-white dark:bg-zinc-100  dark:text-zinc-800 w-[300px] h-full p-6 rounded-xl drop-shadow-md duration-700`}
+        key={card.title}>
         <div className="newCard mb-12">
             <div className={'w-full h-[150px] flex justify-center items-center'}>
                 <Image src={card.image} alt={card.title} height={150} width={300} unoptimized={true}

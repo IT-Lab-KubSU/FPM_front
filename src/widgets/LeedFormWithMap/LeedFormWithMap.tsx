@@ -1,6 +1,6 @@
 "use client"
-import './Feedback.css'
-import {ContainerLayout, LeedForm} from "@/entities";
+import {ContainerLayout} from "@/entities";
+import {LeedForm} from "@/features";
 
 export const LeedFormWithMap = () => {
 

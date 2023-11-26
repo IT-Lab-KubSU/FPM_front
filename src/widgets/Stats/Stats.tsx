@@ -1,5 +1,9 @@
-import {IStatsDTO} from "@/dto";
 import {ContainerLayout} from "@/entities";
+
+interface IStatsDTO {
+    text: string,
+    value: number | string
+}
 
 const Stat = ({text, value}: IStatsDTO) => {
     return (<div className="flex flex-col gap-3 justify-between self-stretch items-center py-6 px-12 lg:px-24 lg:py-12">
@@ -13,7 +17,7 @@ export const Stats = ({stats}: { stats: IStatsDTO[] }) => {
         <ContainerLayout>
             <div className="drop-shadow-md">
                 <div key={"1"}
-                    className="grid grid-cols-1 lg:grid-cols-4 gap-x-12 bg-gradient-to-b from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
+                     className="grid grid-cols-1 lg:grid-cols-4 gap-x-12 bg-gradient-to-b from-[#3B6CE8] to-[#6F94F3] rounded-3xl">
                     {stats.slice(0, 4).map(
                         (item, index) => <Stat text={item.text} value={item.value} key={index}/>
                     )}

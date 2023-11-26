@@ -1,15 +1,21 @@
 "use client";
 import Image from "next/image";
 import {useEffect, useRef} from "react";
-import {IPartnerDTO} from "@/dto";
 import {ContainerLayout, Subtitle} from "@/entities";
 import {Sphere} from "@/shared";
+import Marquee from "react-fast-marquee";
 
-const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO) => {
+interface IPartnerDTO {
+    title: string
+    image: string
+    className?: string
+}
+
+const Partner = ({className, title, image}: IPartnerDTO) => {
     const partnerContainer = useRef<HTMLDivElement>(null);
     const partner = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        if (window.innerWidth < 768)
+        if (window.innerWidth < 1024)
             return
         if (partnerContainer !== null) {
             const el = partnerContainer.current as HTMLDivElement;
@@ -50,10 +56,10 @@ const Partner = ({addClassContainer, addClassPartner, title, image}: IPartnerDTO
         }
     }, [partner, partnerContainer])
     return (
-        <div className={addClassContainer} ref={partnerContainer}>
+        <div className={className} ref={partnerContainer}>
             <div
                 ref={partner}
-                className={`partner h-full bg-zinc-50/40 backdrop-blur-sm drop-shadow-md p-4 rounded-3xl flex items-center gap-1.5 ${addClassPartner}`}>
+                className={`partner h-full bg-zinc-50/40 backdrop-blur-sm drop-shadow-md p-4 rounded-3xl flex items-center gap-1.5`}>
                 <Image src={image} alt={title} width={35} height={35} unoptimized={true}/>
                 <span className="font-medium text-sm text-zinc-800">{title}</span>
             </div>
@@ -69,7 +75,7 @@ export const Partners = ({partners}: { partners: IPartnerDTO[] }) => {
             <div className="grid select-none relative lg:my-48 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
                     {partners.slice(0, 4).map((item, index) =>
-                        <><Partner title={item.title} image={item.image} key={index}/></>
+                        <Partner className={"md:flex"} title={item.title} image={item.image} key={index}/>
                     )}
                 </div>
                 <h2 className="hidden relative text-center text-4xl md:text5xl lg:text-6xl font-extrabold my-8 lg:block"
@@ -78,7 +84,7 @@ export const Partners = ({partners}: { partners: IPartnerDTO[] }) => {
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
                     {partners.slice(4, 8).map((item, index) =>
-                        <><Partner title={item.title} image={item.image} key={index + 4}/></>
+                        <Partner className={"md:flex"} title={item.title} image={item.image} key={index + 4}/>
                     )}
                 </div>
 
