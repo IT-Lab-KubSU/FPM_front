@@ -49,7 +49,7 @@ export const Slider = ({children}: { children: ReactNode[] }) => {
     }, [currentSlide])
 
     return <div className={"container mx-auto h-full"}>
-        <div className={cn("slider-box relative my-4", css.sliderBox)}>
+        <div className={cn("relative my-4", css.sliderBox)}>
             <div className={"overflow-hidden"}>
                 <div ref={slider} className={"slider flex flex-nowrap duration-500 ease-in-out"}>
                     {children.map((child, index) => <div className={"slide mx-2 delay-700"} key={index}>

@@ -4,6 +4,7 @@ import $ from "jquery";
 import {NewCard, INewDTO} from "./NewCard";
 import {Slider} from "@/features";
 import {ContainerLayout} from "@/entities/layouts/ContainerLayout";
+import {SubtitleLayout} from "@/entities";
 
 export const News = ({news}: { news: INewDTO[] }) => {
     const slider = useRef(null);
@@ -17,11 +18,11 @@ export const News = ({news}: { news: INewDTO[] }) => {
         $(slider.current).css("transform", `translate(${width}px, 0)`)
     }, [currentNew])
 
-    return <>
+    return <SubtitleLayout text={"Новости"}>
         <ContainerLayout>
             <Slider>
                 {news.map((item, index) => <NewCard card={item} key={index}/>)}
             </Slider>
         </ContainerLayout>
-    </>
+    </SubtitleLayout>
 }
