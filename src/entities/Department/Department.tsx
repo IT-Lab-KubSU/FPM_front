@@ -2,11 +2,14 @@ import {ContainerLayout} from "@/entities";
 
 interface IDepartmentDTO {
     title: string
-    code: string
-    forms: string[]
-    subjects: string[]
+    slug: string
+    image: string[]
+    advantages: string[]
     text: string
-    image: string,
+    task: {
+        name: string
+        description: string
+    }[],
 }
 
 export const Department = ({department}: { department: IDepartmentDTO}) => {
