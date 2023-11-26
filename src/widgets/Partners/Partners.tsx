@@ -7,6 +7,7 @@ interface IPartnerDTO {
     image: string
 }
 
+
 const Partner = ({title, image}: IPartnerDTO) => {
     return (
         <div className={"flex select-none gap-4 items-center justify-center mx-6 py-14"}>
