@@ -1,9 +1,12 @@
 "use client"
-import DirCard from "./DirCard"
+import {DirCard, IDirection} from "./DirCard"
 import {Accordion, AccordionItem, Tab, Tabs} from "@nextui-org/react"
-import {IDirectionDTO} from "@/dto"
 import {ContainerLayout} from "@/entities"
 
+export interface IDirectionDTO {
+    buttonText: string,
+    directions: IDirection[]
+}
 
 export const Directions = ({directions}: { directions: IDirectionDTO[] }) => {
     return (<ContainerLayout>

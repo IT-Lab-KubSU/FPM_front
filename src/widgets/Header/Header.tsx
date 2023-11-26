@@ -3,7 +3,6 @@ import fpmLogo from "../../../public/fpm_logo.svg";
 import search from "../../../public/search.svg";
 import Link from "next/link";
 import {Menu} from "@/features/Menu/Menu";
-import {CloseIcon} from "@/shared/icons/close.icon";
 
 
 const Links = () => {
@@ -18,7 +17,7 @@ const Links = () => {
 }
 
 export const Header = () => {
-    return (<header className="py-4">
+    return (<header className="py-4 lg:sticky top-0 w-full z-50">
         <div className={"flex lg:hidden justify-between px-4"}>
             <Image
                 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] select-none"
@@ -51,7 +50,7 @@ export const Header = () => {
             </Menu>
         </div>
         <div
-            className={"hidden lg:flex flex-nowrap justify-between items-center z-50 relative drop-shadow-md backdrop-blur-sm mx-auto container gap-4 w-full border-b border-gray-300 bg-white/40 px-8 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border"}>
+            className={"hidden lg:flex flex-nowrap justify-between items-center z-50 relative drop-shadow-md backdrop-blur-md mx-auto container gap-4 w-full border-b border-gray-300 bg-white/60 px-8 pb-6 pt-8 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl lg:border"}>
             <div className="logo flex justify-start w-auto">
                 <a href="/">
                     <Image

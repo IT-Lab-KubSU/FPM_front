@@ -1,13 +1,21 @@
 "use client";
 import Image from "next/image";
-import {IDirection} from "@/dto";
 import {BlueButton} from "@/entities";
+
+export interface IDirection {
+    title: string,
+    subjects: string[],
+    text: string,
+    forms: string[],
+    code: string,
+    image: string
+}
 
 interface IProps {
     card: IDirection,
 }
 
-export default function DirCard({card}: IProps) {
+export const DirCard = ({card}: IProps) => {
     return (<>
         <div
             className={`DirCard px-8 py-4 w-full cursor-pointer duration-700 ease-in-out mb-4 text-2xl flex flex-col text-zinc-800 justify-start`}>

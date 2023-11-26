@@ -114,7 +114,7 @@ export const LeedForm = () => {
         >
                         <span className={"ml-2 text-zinc-900 md:text-md sm:text-sm text-xs"}>
                         Я даю согласие на обработку персональных данных, согласен на получение информационных рассылок от КубГУ и соглашаюсь c
-                        <Link href="" className={"font-bold"}> политикой конфиденциальности</Link>.
+                        <Link href="/privacy-policy" target={"_blank"} className={"font-bold"}> политикой конфиденциальности</Link>.
                     </span>
         </Checkbox>
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
