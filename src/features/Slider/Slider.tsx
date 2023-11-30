@@ -8,15 +8,20 @@ import {
 import $ from "jquery";
 import css from './slider.module.scss'
 import cn from 'classnames'
+import {ArrowLeftIcon, ArrowRightIcon, ChevronIcon, ChevronRightIcon} from "@nextui-org/shared-icons";
 
 function Dot({active, onClick}: { active: boolean, onClick: MouseEventHandler }) {
     return <span onClick={onClick}
                  className={cn('h-1 w-full rounded-3xl block duration-500 cursor-pointer', active ? "bg-[#5C83E7]" : "bg-zinc-300")}></span>
 }
 
-function SliderButton({text, onClick, className}: { text: string, onClick: MouseEventHandler, className?: string }) {
+function SliderButton({children, onClick, className}: {
+    children: ReactNode,
+    onClick: MouseEventHandler,
+    className?: string
+}) {
     return <button onClick={onClick}
-                   className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white " + className}>{text}</button>
+                   className={"duration-500 font-semibold rounded-md ease-in-out py-3 px-7 hover:text-white hover:bg-[#5C83E7] text-zinc-800 drop-shadow-md bg-white " + className}>{children}</button>
 }
 
 export const Slider = ({children}: { children: ReactNode[] }) => {
@@ -64,10 +69,14 @@ export const Slider = ({children}: { children: ReactNode[] }) => {
                     selectSlide(index)
                 }} active={currentSlide <= index && index < currentSlide + numOfElements} key={index}/>)}
             </div>
-            <SliderButton className={"order-1 lg:order-2"} key={"0"} text={"<"}
-                          onClick={() => prevSlide(numOfElements)}/>
-            <SliderButton className={"order-3 lg:order-3"} key={"1"} text={">"}
-                          onClick={() => nextSlide(numOfElements)}/>
+            <SliderButton className={"order-1 lg:order-2"} key={"0"}
+                          onClick={() => prevSlide(numOfElements)}>
+                <ChevronIcon width={""}/>
+            </SliderButton>
+            <SliderButton className={"order-3 lg:order-3"} key={"1"}
+                          onClick={() => nextSlide(numOfElements)}>
+                <ChevronRightIcon width={""}/>
+            </SliderButton>
         </div>
     </div>
 }

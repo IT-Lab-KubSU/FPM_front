@@ -7,7 +7,7 @@ export const LeedFormWithMap = () => {
     return <ContainerLayout>
         <div>
             <div className={"rounded-2xl bg-gradient-to-b from-[#A5B9ECC4] to-[#ccdafdc4] grid drop-shadow-lg overflow-hidden grid-cols-1 lg:grid-cols-2"}>
-                <div className={"p-12"}>
+                <div className={"py-12 px-8 md:px-12"}>
                     <div className={"mb-12"}>
                         <span className={"font-bold text-2xl lg:text-3xl text-zinc-900"}>
                             Оставить заявку

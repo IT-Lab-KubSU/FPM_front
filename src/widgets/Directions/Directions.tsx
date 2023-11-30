@@ -12,8 +12,12 @@ export const Directions = ({directions}: { directions: IDirectionDTO[] }) => {
     return <SubtitleLayout text={"Направления подготовки"}>
         <ContainerLayout>
             <Tabs size={"lg"}
-                  className={"pb-4 font-semibold"}
+                  classNames={{
+                      tabList: "bg-white",
+                      cursor: "bg-fpmPrimary"
+                  }}
                   color={"primary"}
+                  className={"pb-4 font-semibold"}
                   variant={"light"}
                   aria-label={"Направления"}
                   radius={"lg"}
@@ -22,7 +26,7 @@ export const Directions = ({directions}: { directions: IDirectionDTO[] }) => {
                     <Accordion
                         variant="splitted"
                         className={"px-0"}
-                        defaultSelectedKeys={["0"]}>
+                        defaultExpandedKeys={["0"]}>
                         {directions[index].directions.map((item, index) =>
                             <AccordionItem
                                 startContent={<div

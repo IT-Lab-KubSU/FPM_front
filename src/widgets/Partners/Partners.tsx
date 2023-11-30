@@ -10,8 +10,8 @@ interface IPartnerDTO {
 
 const Partner = ({title, image}: IPartnerDTO) => {
     return (
-        <div className={"flex select-none gap-4 items-center justify-center mx-6 py-14"}>
-            <Image src={image} alt={title} width={60} height={60} unoptimized={true}/>
+        <div className={"flex select-none gap-2 md:gap-4 items-center justify-center mx-4 py-14"}>
+            <Image src={image} alt={title} width={50} height={50} unoptimized={true}/>
             <span className="font-medium text-md text-zinc-800">{title}</span>
         </div>)
 }
