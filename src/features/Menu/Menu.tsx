@@ -2,6 +2,7 @@
 import {MenuIcon} from "@/shared/icons/menu.icon";
 import {useRef, useState, ReactNode, MouseEvent} from "react";
 import {CloseIcon} from "@/shared/icons/close.icon";
+import cn from "classnames";
 
 export const Menu = ({children, className}: { children: ReactNode, className?: string }) => {
     const [isOpen, setOpen] = useState(false);
@@ -16,11 +17,11 @@ export const Menu = ({children, className}: { children: ReactNode, className?: s
             <MenuIcon width={50}/>
         </div>
         <div ref={menuOuterRef} id={"close-btn"}
-             className={`w-full h-full fixed z-40 top-0 duration-500 left-full opacity-0 ${isOpen && "opacity-100 -translate-x-full"}`}
+             className={cn("w-full h-full fixed z-40 top-0 duration-400 ease-out right-full", isOpen && "translate-x-full")}
              onClick={handleClose}>
             <div className={`z-50 h-full relative float-right ${className}`}>
-                <div onClick={() => setOpen(false)} className={"absolute top-2 left-1 opacity-80"}>
-                    <CloseIcon width={50}/>
+                <div onClick={() => setOpen(false)} className={"absolute top-2 right-1 opacity-80"}>
+                    <CloseIcon width={80}/>
                 </div>
                 {children}
             </div>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import fpmLogo from "../../../public/fpm_logo.svg";
 import {ContainerLayout} from "@/entities/layouts/ContainerLayout";
 import css from "./footer.module.scss"
+import React from "react";
+import {Divider} from "@nextui-org/react";
 
 
 export const Footer = () => {
