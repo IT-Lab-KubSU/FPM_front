@@ -1,3 +1,4 @@
+"use client"
 import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/react";
 import {useState} from "react";
 import {Selection} from "@react-types/shared/src/selection";

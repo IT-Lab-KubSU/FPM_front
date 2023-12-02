@@ -1,0 +1,16 @@
+.department_chair_name{
+    font-weight: 500;
+    width: fit-content;
+    border-bottom: 2px solid #5C83E7;
+    padding-bottom: 0.5rem;
+}
+.department_chair_podr{
+    color:#5C83E7;
+}
+.department_chair_podr:hover{
+    border: 1px solid #5C83E7;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-radius: 0.75rem;
+    width: fit-content;
+}

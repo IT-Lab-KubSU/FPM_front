@@ -1,8 +1,5 @@
-import {Footer, Header} from "@/widgets";
+import {DepartmentsPage} from "@/ui-pages/Departments";
 
 export default function Page() {
-    return <>
-        <Header/>
-        <Footer/>
-    </>
+    return <DepartmentsPage/>
 }

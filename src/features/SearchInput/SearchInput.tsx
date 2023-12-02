@@ -1,3 +1,4 @@
+"use client"
 import {
     CircularProgress,
     Input,
@@ -11,7 +12,7 @@ import {
     useDisclosure
 } from "@nextui-org/react";
 import {SearchIcon} from "@nextui-org/shared-icons";
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Kbd} from "@nextui-org/kbd";
 
 export interface ISearchResult {
