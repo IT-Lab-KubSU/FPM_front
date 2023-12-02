@@ -55,7 +55,7 @@ const Window = ({ name, size, opacity, y }: { name: string, size: string, opacit
 export const DepartmentDirections = ({department}: {department: IDepartmentDTO}) => {
     const [windows, setWindows] = useState<string[]>(names.slice(0, 3));
     const[window_now, setWindows_now] = useState(0);
-
+    const depart = department
     useEffect(() => {
         const interval = setInterval(() => {
             const nextNames = names.slice(window_now, window_now + 3);
