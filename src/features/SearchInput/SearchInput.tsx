@@ -60,16 +60,18 @@ export const SearchInput = () => {
             <SearchIcon className={"text-2xl pointer-events-none flex-shrink-0"}/>
         </div>
         <Modal isOpen={isOpen}
+               size={"2xl"}
+               placement={"center"}
                onOpenChange={() => {
                    focus()
                    onOpenChange()
-               }
-               }
+               }}
                onClose={() => {
                    setSearchValue(undefined);
                    onOpenChange();
                }}
                backdrop={"blur"}
+               className={"mx-4"}
                classNames={{
                    header: "block p-0 shadow-inner",
                    body: "p-2 pb-3 duration-500 items-center",
@@ -78,8 +80,9 @@ export const SearchInput = () => {
             <ModalContent>
                 <ModalHeader>
                     <Input
+                        autoFocus={true}
                         classNames={{
-                            inputWrapper: "shadow-[0_0_15px_5px_rgba(100,100,100,0.3)]"
+                            inputWrapper: "group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 shadow-[0_0_15px_5px_rgba(100,100,100,0.3)]"
                         }}
                         value={searchValue}
                         onInput={(e) => {
