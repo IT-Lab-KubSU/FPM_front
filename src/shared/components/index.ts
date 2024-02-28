@@ -1,1 +1,1 @@
-export {Sphere} from './Sphere/Sphere'
+export { Sphere } from "./Sphere/Sphere";

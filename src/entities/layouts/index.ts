@@ -1,2 +1,2 @@
-export {ContainerLayout} from './ContainerLayout'
-export {SubtitleLayout} from './SubtitleLayout'
+export { ContainerLayout } from "./ContainerLayout";
+export { SubtitleLayout } from "./SubtitleLayout";

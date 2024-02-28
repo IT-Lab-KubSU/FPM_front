@@ -1,19 +1,19 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import {ReactNode} from "react";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { ReactElement, ReactNode } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'ФКТиПМ',
-  description: 'Факультет компьютерных технологий и прикладной математики',
-}
+  title: "ФКТиПМ",
+  description: "Факультет компьютерных технологий и прикладной математики",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode
-}) {
+  children: ReactNode;
+}): ReactElement {
   return (
     <html lang="en">
       <head>
@@ -22,5 +22,5 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>{children}</body>
     </html>
-  )
+  );
 }
