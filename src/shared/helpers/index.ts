@@ -1,1 +1,0 @@
-export {stringifyDate} from './stringifyDate'

@@ -1,11 +1,17 @@
-import {Subtitle} from "@/entities";
-import {ReactNode} from "react";
+import { Subtitle } from "@/entities";
+import { ReactElement, ReactNode } from "react";
 
-export const SubtitleLayout = ({children, text}: { children: ReactNode, text: string }) => {
-    return (
-        <>
-            <Subtitle text={text}/>
-            {children}
-        </>
-    )
-}
+export const SubtitleLayout = ({
+  children,
+  text,
+}: {
+  children: ReactNode;
+  text: string;
+}): ReactElement => {
+  return (
+    <>
+      <Subtitle text={text} />
+      {children}
+    </>
+  );
+};

@@ -1,6 +1,6 @@
-import {HomePage} from "@/ui-pages/Home/home.page";
+import { HomePage } from "@/ui-pages/Home/home.page";
+import { ReactElement } from "react";
 
-
-export default function Home() {
-    return <HomePage/>
+export default function Home(): ReactElement {
+  return <HomePage />;
 }
