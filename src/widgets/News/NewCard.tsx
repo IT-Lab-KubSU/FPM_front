@@ -6,10 +6,10 @@ export interface INewDTO {
   title: string;
   text: string;
   image: string;
-  date: number;
+  date: Date | string | number;
 }
 
-export const NewCard = ({ card }: { card: INewDTO }): ReactElement => {
+export const NewCard = (card: INewDTO): ReactElement => {
   const formattedDate = stringifyDate(card.date);
 
   return (

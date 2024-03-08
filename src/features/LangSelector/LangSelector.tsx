@@ -9,28 +9,40 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+
+enum Locale {
+  ru,
+  en,
+  cn
+}
 
 interface Language {
   slug: string;
+  imgCode: string;
   localCode: string;
 }
 
 const languages: { [key: string]: Language } = {
-  ru: {
+  [Locale.ru]: {
+    imgCode: "ru",
     slug: "Russian",
     localCode: "РУ",
   },
-  gb: {
+  [Locale.en]: {
+    imgCode: "gb",
     slug: "English",
     localCode: "EN",
   },
-  cn: {
+  [Locale.cn]: {
+    imgCode: "cn",
     slug: "Chinese",
     localCode: "中文",
   },
 };
 
 export const LangSelector = (): ReactElement => {
+  const router = useRouter();
   // toDo(Set disabled keys or remove)
   const disabledKeys = [""];
   const [lang, setLang] = useState<Selection>(
@@ -57,21 +69,20 @@ export const LangSelector = (): ReactElement => {
       <DropdownMenu
         variant={"flat"}
         color={"primary"}
-        disallowEmptySelection
         disabledKeys={disabledKeys}
-        selectionMode={"single"}
         aria-label={"Выбор языка"}
-        onSelectionChange={setLang}
-        selectedKeys={lang}
       >
         {Object.entries(languages).map(([key, language]) => (
           <DropdownItem
             key={key}
+            onClick={() => {
+              router.push("./", {scroll: true});
+            }}
             startContent={
               <Avatar
                 alt={language.slug}
                 className={"w-7 h-7"}
-                src={`https://flagcdn.com/${key}.svg`}
+                src={`https://flagcdn.com/${language.imgCode}.svg`}
               />
             }
           >
