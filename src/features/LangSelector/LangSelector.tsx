@@ -1,7 +1,6 @@
 "use client";
-import { ReactElement, useMemo, useState } from "react";
 
-import { Selection } from "@react-types/shared/src/selection";
+import { useLanguage } from "@/hooks";
 import {
   Avatar,
   Dropdown,
@@ -9,13 +8,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-
-enum Locale {
-  ru,
-  en,
-  cn
-}
+import { ReactElement, useMemo } from "react";
 
 interface Language {
   slug: string;
@@ -24,34 +17,28 @@ interface Language {
 }
 
 const languages: { [key: string]: Language } = {
-  [Locale.ru]: {
+  ru: {
     imgCode: "ru",
     slug: "Russian",
     localCode: "РУ",
   },
-  [Locale.en]: {
+  en: {
     imgCode: "gb",
     slug: "English",
     localCode: "EN",
   },
-  [Locale.cn]: {
+  cn: {
     imgCode: "cn",
     slug: "Chinese",
     localCode: "中文",
   },
-};
+} as const;
 
 export const LangSelector = (): ReactElement => {
-  const router = useRouter();
-  // toDo(Set disabled keys or remove)
-  const disabledKeys = [""];
-  const [lang, setLang] = useState<Selection>(
-    new Set([Object.keys(languages)[0]]),
-  );
+  const [lang, setLang] = useLanguage();
 
   const currentLanguage = useMemo(() => {
-    const key = Array.from(lang)[0].toString();
-    return languages[key];
+    return languages[lang] ?? languages["ru"];
   }, [lang]);
 
   return (
@@ -69,14 +56,13 @@ export const LangSelector = (): ReactElement => {
       <DropdownMenu
         variant={"flat"}
         color={"primary"}
-        disabledKeys={disabledKeys}
         aria-label={"Выбор языка"}
       >
         {Object.entries(languages).map(([key, language]) => (
           <DropdownItem
             key={key}
             onClick={() => {
-              router.push("./", {scroll: true});
+              setLang(key);
             }}
             startContent={
               <Avatar

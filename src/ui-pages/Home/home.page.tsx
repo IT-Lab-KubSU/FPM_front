@@ -1,4 +1,5 @@
 "use client";
+import { apolloClient } from "@/apolloClient";
 import { CONSTANTS } from "@/app/constants";
 import { SnakeText } from "@/features";
 import {
@@ -11,28 +12,30 @@ import {
   Partners,
   Stats,
 } from "@/widgets";
-import { ReactElement } from "react";
 import { ApolloProvider } from "@apollo/client";
-import { apolloClient } from "@/apolloClient";
+import { ReactElement } from "react";
+import { CookiesProvider } from "react-cookie";
 
 export const HomePage = (): ReactElement => {
   return (
     <>
-      <ApolloProvider client={apolloClient}>
-        <Header />
-        <Intro />
-        <Stats stats={CONSTANTS.stats} />
-        <SnakeText
-          text={" мы выпускаем квалифицированных специалистов"}
-          mainText={"50лет"}
-        />
-        <Directions directions={CONSTANTS.directions} />
-        <News />
-        <LeedFormWithMap />
-        <Partners partners={CONSTANTS.partners} />
-        {/*<AboutUs/>*/}
-        <Footer />
-      </ApolloProvider>
+      <CookiesProvider>
+        <ApolloProvider client={apolloClient}>
+          <Header />
+          <Intro />
+          <Stats stats={CONSTANTS.stats} />
+          <SnakeText
+            text={" мы выпускаем квалифицированных специалистов"}
+            mainText={"50лет"}
+          />
+          <Directions directions={CONSTANTS.directions} />
+          <News />
+          <LeedFormWithMap />
+          <Partners partners={CONSTANTS.partners} />
+          {/*<AboutUs/>*/}
+          <Footer />
+        </ApolloProvider>
+      </CookiesProvider>
     </>
   );
 };
