@@ -1,11 +1,11 @@
 "use client";
-import { ReactElement } from "react";
-import { Slider } from "@/features";
-import { ContainerLayout } from "@/entities/layouts/ContainerLayout";
-import { gql, useQuery } from "@apollo/client";
-import { SubtitleLayout } from "@/entities";
-import { NewCard } from "@/widgets/News/NewCard";
 import { GetNewsQuery } from "@/__generated__/graphql";
+import { SubtitleLayout } from "@/entities";
+import { ContainerLayout } from "@/entities/layouts/ContainerLayout";
+import { Slider } from "@/features";
+import { NewCard } from "@/widgets/News/NewCard";
+import { gql, useQuery } from "@apollo/client";
+import { ReactElement } from "react";
 
 const newsQuery = gql`
   query GetNews($locale: I18NLocaleCode!) {
@@ -35,7 +35,7 @@ const newsQuery = gql`
 `;
 
 export const News = (): ReactElement => {
-  const { loading, error, data } = useQuery<GetNewsQuery>(newsQuery, {
+  const { loading, data } = useQuery<GetNewsQuery>(newsQuery, {
     variables: {
       locale: "ru",
     },
