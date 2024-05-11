@@ -1,6 +1,5 @@
 "use client";
-
-import { useLanguage } from "@/hooks";
+import { languages } from "@/language";
 import {
   Avatar,
   Dropdown,
@@ -8,38 +7,17 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
+import { useRouter, usePathname } from "next/navigation";
 import { ReactElement, useMemo } from "react";
 
-interface Language {
-  slug: string;
-  imgCode: string;
-  localCode: string;
-}
-
-const languages: { [key: string]: Language } = {
-  ru: {
-    imgCode: "ru",
-    slug: "Russian",
-    localCode: "РУ",
-  },
-  en: {
-    imgCode: "gb",
-    slug: "English",
-    localCode: "EN",
-  },
-  cn: {
-    imgCode: "cn",
-    slug: "Chinese",
-    localCode: "中文",
-  },
-} as const;
-
 export const LangSelector = (): ReactElement => {
-  const [lang, setLang] = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const currentLanguage = useMemo(() => {
-    return languages[lang] ?? languages["ru"];
-  }, [lang]);
+    const code = pathname.split("/")[1];
+    return languages[code];
+  }, [pathname]);
 
   return (
     <Dropdown
@@ -60,9 +38,10 @@ export const LangSelector = (): ReactElement => {
       >
         {Object.entries(languages).map(([key, language]) => (
           <DropdownItem
+            textValue={language.localCode}
             key={key}
             onClick={() => {
-              setLang(key);
+              router.push(`/${key}/${pathname.split("/").slice(2).join("/")}`);
             }}
             startContent={
               <Avatar

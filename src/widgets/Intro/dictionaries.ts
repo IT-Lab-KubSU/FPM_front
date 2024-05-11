@@ -3,7 +3,7 @@ import "server-only";
 const dictionaries: { [key: string]: () => object } = {
   ru: () => import("./dictionaries/ru.json").then((module) => module.default),
   en: () => import("./dictionaries/en.json").then((module) => module.default),
-  zh: () => import("./dictionaries/zh.json").then((module) => module.default),
+  cn: () => import("./dictionaries/cn.json").then((module) => module.default),
 };
 
 export interface IIntroDict {

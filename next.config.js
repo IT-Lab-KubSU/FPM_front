@@ -7,12 +7,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/uploads/:path*',
+        source: "/uploads/:path*",
         permanent: true,
-        destination: 'http://localhost:1337/uploads/:path*' // Proxy to Backend
-      }
-    ]
-  }
+        destination: "http://localhost:1337/uploads/:path*", // Proxy to Backend
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
