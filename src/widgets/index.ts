@@ -7,3 +7,6 @@ export { LeedFormWithMap } from "./LeedFormWithMap/LeedFormWithMap";
 export { Intro } from "./Intro/Intro";
 export { Partners } from "./Partners/Partners";
 export { Stats } from "./Stats/Stats";
+export * from "./Department";
+export { Contacts } from "./Contacts/Contacts";
+
