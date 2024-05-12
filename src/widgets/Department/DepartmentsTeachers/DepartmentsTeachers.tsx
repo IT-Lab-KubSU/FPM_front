@@ -2,46 +2,7 @@ import React, {ReactElement} from "react";
 import {ContainerLayout, SubtitleLayout} from "@/entities";
 import {DepartmentsTeachersCard} from "@/widgets";
 import {Link} from "@nextui-org/react";
-
-export interface IDepartmentsDTO {
-    slug: string;
-    title: string;
-    about: string;
-    educational_activities: string;
-    scientific_activities: string;
-    advantages: string[];
-    task: IDepartmentTask;
-    image: ImageDepartmentDto[];
-    head_departments: IDepartmentHead;
-    teachers: IDepartmentTeachers[];
-}
-
-interface ImageDepartmentDto {
-    image: string;
-}
-
-export interface IDepartmentTask {
-    name: string;
-    description: string;
-}
-
-export interface IDepartmentTeachers {
-    fio: string;
-    post: string;
-    image: string;
-    link: string;
-}
-
-export interface IDepartmentHead {
-    fio: string;
-    post: string;
-    email: string;
-    phone_number: string;
-    seniority: number;
-    link: string;
-    image: string;
-    cabinet: string;
-}
+import {IDepartmentsDTO} from "@/widgets/Department/DepartmentsInterface";
 
 export const DepartmentsTeachers = ({ departments }: {departments: IDepartmentsDTO}): ReactElement => {
     return (

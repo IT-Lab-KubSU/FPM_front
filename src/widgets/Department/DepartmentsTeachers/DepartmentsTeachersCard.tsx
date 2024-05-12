@@ -1,13 +1,7 @@
 import {ReactElement} from "react";
 import {Avatar, Link} from "@nextui-org/react";
 import {AvatarIcon} from "@nextui-org/react";
-
-export interface IDepartmentTeachers {
-    fio: string;
-    post: string;
-    image: string;
-    link: string;
-}
+import {IDepartmentTeachers} from "@/widgets/Department/DepartmentsInterface";
 
 export const DepartmentsTeachersCard = ({ teachers }: {teachers: IDepartmentTeachers}): ReactElement => {
     return (

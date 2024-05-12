@@ -1,12 +1,9 @@
 "use client";
-import {ReactElement, ReactNode, useState} from 'react';
+import {ReactElement, useState} from 'react';
 import styles from './DepartmentsSlider.module.scss';
 import Image from "next/image";
 import {ContainerLayout, SubtitleLayout} from "@/entities";
-// import {NewImageDepartment} from "./NewImageDepartment";
-interface ImageDepartmentDto {
-    image: string;
-}
+import {ImageDepartmentDto} from "@/widgets/Department/DepartmentsInterface";
 
 export const DepartmentSlider = ({ image }: { image: ImageDepartmentDto[] }): ReactElement =>  {
     const [currentIndex, setCurrentIndex] = useState(0);

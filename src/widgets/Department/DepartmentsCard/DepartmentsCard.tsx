@@ -1,17 +1,7 @@
 import Image from "next/image";
 import { ReactElement } from "react";
 import {ContainerLayout, HeadingTextLayout} from "@/entities";
-
-export interface IDepartmentHead {
-    fio: string;
-    post: string;
-    email: string;
-    phone_number: string;
-    seniority: number;
-    link: string;
-    image: string;
-    cabinet: string;
-}
+import {IDepartmentHead} from "@/widgets/Department/DepartmentsInterface";
 
 export const DepartmentsCard = ({ departments }: {departments: IDepartmentHead}): ReactElement => {
     return (

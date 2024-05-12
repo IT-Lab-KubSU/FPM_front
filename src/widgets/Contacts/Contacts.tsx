@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import {ContainerLayout, HeadingTextLayout} from "@/entities";
-import css from "@/widgets/Footer/footer.module.scss";
 import Link from "next/link";
 
 export interface IContactsDto {

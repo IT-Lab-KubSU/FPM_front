@@ -4,47 +4,8 @@ import {ContainerLayout, SubtitleLayout} from "@/entities";
 import React from "react";
 import {Button} from "@nextui-org/react";
 import {Link} from "@nextui-org/react";
-import css from "./aboutdepartment.module.css";
-
-export interface IDepartmentsDTO {
-    slug: string;
-    title: string;
-    about: string;
-    educational_activities: string;
-    scientific_activities: string;
-    advantages: string[];
-    task: IDepartmentTask;
-    image: ImageDepartmentDto[];
-    head_departments: IDepartmentHead;
-    teachers: IDepartmentTeachers[];
-}
-
-interface ImageDepartmentDto {
-    image: string;
-}
-
-export interface IDepartmentTask {
-    name: string;
-    description: string;
-}
-
-export interface IDepartmentTeachers {
-    fio: string;
-    post: string;
-    image: string;
-    link: string;
-}
-
-export interface IDepartmentHead {
-    fio: string;
-    post: string;
-    email: string;
-    phone_number: string;
-    seniority: number;
-    link: string;
-    image: string;
-    cabinet: string;
-}
+import css from "./aboutdepartments.module.css";
+import {IDepartmentsDTO} from "@/widgets/Department/DepartmentsInterface";
 
 export const AboutDepartments = ({ about_departments }: {about_departments: IDepartmentsDTO}): ReactElement => {
     const [aboutText, setAboutText] = useState(about_departments.about);
