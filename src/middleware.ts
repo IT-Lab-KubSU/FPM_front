@@ -13,7 +13,9 @@ const getLocale = (request: NextRequest): string => {
   return match(languages, locales, defaultLocale);
 };
 
-export const middleware = async (request: NextRequest) => {
+export const middleware = async (
+  request: NextRequest,
+): Promise<NextResponse | undefined> => {
   const { pathname } = request.nextUrl;
   const pathnameHasLocale = Object.keys(languages).some((locale) =>
     pathname.startsWith(`/${locale}`),

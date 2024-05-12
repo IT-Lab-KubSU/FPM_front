@@ -1,7 +1,7 @@
 "use client";
-import { MouseEventHandler, ReactElement } from "react";
-import Link from "next/link";
 import cn from "classnames";
+import Link from "next/link";
+import { MouseEventHandler, ReactElement } from "react";
 
 interface IProps {
   href?: string;

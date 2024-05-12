@@ -1,7 +1,7 @@
 "use client";
-import { useRef, useState, ReactNode, MouseEvent, ReactElement } from "react";
 import { CloseIcon, MenuIcon } from "@/shared/icons";
 import cn from "classnames";
+import { useRef, useState, ReactNode, MouseEvent, ReactElement } from "react";
 
 export const Menu = ({
   children,

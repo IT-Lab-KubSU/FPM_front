@@ -1,8 +1,9 @@
 "use client";
-import { DirCard, IDirection } from "./DirCard";
-import { Accordion, AccordionItem, Tab, Tabs } from "@nextui-org/react";
 import { ContainerLayout, SubtitleLayout } from "@/entities";
+import { Accordion, AccordionItem, Tab, Tabs } from "@nextui-org/react";
 import { ReactElement } from "react";
+
+import { DirCard, IDirection } from "./DirCard";
 
 export interface IDirectionDTO {
   buttonText: string;

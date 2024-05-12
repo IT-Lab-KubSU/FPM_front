@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
 import { ReactElement } from "react";
+import Marquee from "react-fast-marquee";
 
 interface IPartnerDTO {
   title: string;

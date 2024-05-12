@@ -1,4 +1,6 @@
 "use client";
+import { BlueButton } from "@/entities";
+import { Button } from "@nextui-org/button";
 import {
   Checkbox,
   Input,
@@ -9,10 +11,8 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import { BlueButton } from "@/entities";
 import Link from "next/link";
 import { ReactElement, useMemo, useState } from "react";
-import { Button } from "@nextui-org/button";
 
 export const LeedForm = (): ReactElement => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

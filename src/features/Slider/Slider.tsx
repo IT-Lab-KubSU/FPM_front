@@ -1,4 +1,7 @@
 "use client";
+import { ChevronIcon, ChevronRightIcon } from "@nextui-org/shared-icons";
+import cn from "classnames";
+import $ from "jquery";
 import {
   MouseEventHandler,
   ReactElement,
@@ -7,10 +10,8 @@ import {
   useRef,
   useState,
 } from "react";
-import $ from "jquery";
+
 import css from "./slider.module.scss";
-import cn from "classnames";
-import { ChevronIcon, ChevronRightIcon } from "@nextui-org/shared-icons";
 
 const Dot = ({
   active,
