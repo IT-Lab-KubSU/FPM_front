@@ -1,7 +1,5 @@
 "use client";
-import { ReactElement, useMemo, useState } from "react";
-
-import { Selection } from "@react-types/shared/src/selection";
+import { languages } from "@/language";
 import {
   Avatar,
   Dropdown,
@@ -9,38 +7,17 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-
-interface Language {
-  slug: string;
-  localCode: string;
-}
-
-const languages: { [key: string]: Language } = {
-  ru: {
-    slug: "Russian",
-    localCode: "РУ",
-  },
-  gb: {
-    slug: "English",
-    localCode: "EN",
-  },
-  cn: {
-    slug: "Chinese",
-    localCode: "中文",
-  },
-};
+import { useRouter, usePathname } from "next/navigation";
+import { ReactElement, useMemo } from "react";
 
 export const LangSelector = (): ReactElement => {
-  // toDo(Set disabled keys or remove)
-  const disabledKeys = [""];
-  const [lang, setLang] = useState<Selection>(
-    new Set([Object.keys(languages)[0]]),
-  );
+  const router = useRouter();
+  const pathname = usePathname();
 
   const currentLanguage = useMemo(() => {
-    const key = Array.from(lang)[0].toString();
-    return languages[key];
-  }, [lang]);
+    const code = pathname.split("/")[1];
+    return languages[code];
+  }, [pathname]);
 
   return (
     <Dropdown
@@ -57,21 +34,20 @@ export const LangSelector = (): ReactElement => {
       <DropdownMenu
         variant={"flat"}
         color={"primary"}
-        disallowEmptySelection
-        disabledKeys={disabledKeys}
-        selectionMode={"single"}
         aria-label={"Выбор языка"}
-        onSelectionChange={setLang}
-        selectedKeys={lang}
       >
         {Object.entries(languages).map(([key, language]) => (
           <DropdownItem
+            textValue={language.localCode}
             key={key}
+            onClick={() => {
+              router.push(`/${key}/${pathname.split("/").slice(2).join("/")}`);
+            }}
             startContent={
               <Avatar
                 alt={language.slug}
                 className={"w-7 h-7"}
-                src={`https://flagcdn.com/${key}.svg`}
+                src={`https://flagcdn.com/${language.imgCode}.svg`}
               />
             }
           >

@@ -1,4 +1,5 @@
 import { CONSTANTS } from "@/app/constants";
+import { ApolloProviderLayout } from "@/entities";
 import { SnakeText } from "@/features";
 import {
   Directions,
@@ -12,18 +13,20 @@ import {
 } from "@/widgets";
 import { ReactElement } from "react";
 
-export const HomePage = (): ReactElement => {
+export const HomePage = ({ lang }: { lang: string }): ReactElement => {
   return (
     <>
       <Header />
-      <Intro />
+      <Intro lang={lang} />
       <Stats stats={CONSTANTS.stats} />
       <SnakeText
         text={" мы выпускаем квалифицированных специалистов"}
         mainText={"50лет"}
       />
       <Directions directions={CONSTANTS.directions} />
-      <News news={CONSTANTS.news} />
+      <ApolloProviderLayout>
+        <News />
+      </ApolloProviderLayout>
       <LeedFormWithMap />
       <Partners partners={CONSTANTS.partners} />
       {/*<AboutUs/>*/}
