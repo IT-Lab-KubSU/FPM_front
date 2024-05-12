@@ -13,12 +13,29 @@ const getLocale = (request: NextRequest): string => {
   return match(languages, locales, defaultLocale);
 };
 
-export const middleware = async (request: NextRequest) => {
-  const { pathname } = request.nextUrl;
-  const pathnameHasLocale = Object.keys(languages).some((locale) =>
+const pathnameHasLocale = (pathname: string): boolean => {
+  return Object.keys(languages).some((locale) =>
     pathname.startsWith(`/${locale}`),
   );
-  if (pathnameHasLocale) return;
+};
+
+export const middleware = async (request: NextRequest) => {
+  const { pathname } = request.nextUrl;
+  const referer = request.headers.get("referer");
+
+  if (pathnameHasLocale(pathname)) return;
+
+  if (referer) {
+    const url = new URL(referer);
+    const refererHasLocale = pathnameHasLocale(url.pathname);
+    if (refererHasLocale) {
+      // extract locale and remove leading slash
+      const locale = url.pathname.split("/")[1];
+      const destination = new URL(`/${locale}${pathname}`, url.origin);
+      return NextResponse.redirect(destination);
+    }
+  }
+
   const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
