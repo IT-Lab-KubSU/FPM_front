@@ -41,7 +41,7 @@ export const LangSelector = (): ReactElement => {
             textValue={language.localCode}
             key={key}
             onClick={() => {
-              router.push(`/${key}/${pathname.split("/").slice(2).join("/")}`);
+              location.pathname = `/${key}/${pathname.split("/").slice(2).join("/")}`;
             }}
             startContent={
               <Avatar
