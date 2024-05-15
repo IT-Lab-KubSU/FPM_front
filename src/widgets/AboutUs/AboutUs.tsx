@@ -1,6 +1,7 @@
 import { ContainerLayout, SubtitleLayout } from "@/entities";
-import AboutUsCard from "./AboutUsCard";
 import { ReactElement } from "react";
+
+import AboutUsCard from "./AboutUsCard";
 
 export const AboutUs = (): ReactElement => {
   return (

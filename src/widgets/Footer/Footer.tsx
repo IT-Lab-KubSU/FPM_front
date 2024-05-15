@@ -1,9 +1,10 @@
+import { ContainerLayout } from "@/entities/layouts/ContainerLayout";
 import Image from "next/image";
 import Link from "next/link";
-import fpmLogo from "../../../public/fpm_logo.svg";
-import { ContainerLayout } from "@/entities/layouts/ContainerLayout";
-import css from "./footer.module.scss";
 import { ReactElement } from "react";
+
+import fpmLogo from "../../../public/fpm_logo.svg";
+import css from "./footer.module.scss";
 
 export const Footer = (): ReactElement => {
   return (

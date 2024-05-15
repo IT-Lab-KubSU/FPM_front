@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import { BlueButton } from "@/entities";
+import Image from "next/image";
 import { ReactElement } from "react";
 
 export interface IDirection {

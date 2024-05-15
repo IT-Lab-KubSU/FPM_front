@@ -1,11 +1,12 @@
 "use client";
-import Image from "next/image";
-import fpmLogo from "../../../public/fpm_logo.svg";
-import Link from "next/link";
+import { LangSelector, SearchInput } from "@/features";
 import { Menu } from "@/features/Menu/Menu";
 import { Accordion, AccordionItem, Chip } from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 import React, { ReactElement } from "react";
-import { LangSelector, SearchInput } from "@/features";
+
+import fpmLogo from "../../../public/fpm_logo.svg";
 
 const Links = (): ReactElement => {
   return (

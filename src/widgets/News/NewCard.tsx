@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { stringifyDate } from "@/utils";
+import Image from "next/image";
 import { ReactElement } from "react";
 
 export interface INewDTO {
